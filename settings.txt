@@ -1,2 +1,2 @@
 refresh-rate-index:6
-blend-tile-edges:false
+blend-tile-edges:true
