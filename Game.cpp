@@ -719,6 +719,8 @@ void Game::windowClosed() {
     delete settler2Box;
     delete settler3Box;
     delete world.spaces;
+    delete[] pauseMenuButtons;
+    delete[] buildButtons;
 }
 void Game::manageGridItem(int x, int y) {
     if (world.getSpace(x, y).getIsFull() && world.getSpace(x, y).isDestroyed()) {
@@ -728,11 +730,16 @@ void Game::manageGridItem(int x, int y) {
 }
 void Game::giveOrders() {
     int givenOrders = 0;
+    int* orderIndexes = new int[currentSettlerCount];
+    //Iterates over every settler
     for (int i = 0; i < currentSettlerCount; i++) {
+        //Skip over that settler if they are already working on completing an order
         if (settlers[i].getHasOrder()) continue;
+        //Iterate over all of the orders starting at 0
         for (int j = givenOrders; j < currentOrderIndex; j++) {
+            //If that ord
             if (settlers[i].giveOrder(orders[j])) {
-                givenOrders++;
+                orderIndexes[givenOrders++] = j;
             }
         }
     }
@@ -743,6 +750,7 @@ void Game::giveOrders() {
         currentOrderIndex -= givenOrders;
 
     }
+    delete[] orderIndexes;
 }
 void Game::queueOrder(Order order) {
     orders[currentOrderIndex++] = order;
@@ -766,10 +774,11 @@ void Game::dropResources(int x, int y, string oldTextureName) {
 
 
     //Order(string newOrderType, Vector2 newPosition, string newSkillName, int newSkillRequirementLevel) {
-    queueOrder(Order("haul", Vector2(x, y), "Construction", 1));
+    queueOrder(Order("haul", Vector2(x, y), "Fitness", 0));
 }
 void Game::addGroundItem(GroundItem item) {
-    groundItems[currentGroundItemIndex++] = item;
+    groundItems[currentGroundItemIndex] = item;
+    groundItems[currentGroundItemIndex++].setVisible(true);
 }
 void Game::draw(sf::RenderWindow& window) {
     int xStart = floor(offset.x * -1 / blockSize);
@@ -798,7 +807,8 @@ void Game::draw(sf::RenderWindow& window) {
         }
     }
     for (int j = 0; j < currentGroundItemIndex; j++) {
-        getImageByName(groundItems[j].getTextureName()).draw(window, addVectors(Vector2(groundItems[j].getPosition().x * blockSize, groundItems[j].getPosition().y * blockSize), offset));
+        if(groundItems[j].getIsVisible())
+            getImageByName(groundItems[j].getTextureName()).draw(window, addVectors(Vector2(groundItems[j].getPosition().x * blockSize, groundItems[j].getPosition().y * blockSize), offset));
         if(positionWithinBounds(groundItems[j].getPosition().y + 1))
             if(world.getSpace(groundItems[j].getPosition().x, groundItems[j].getPosition().y + 1).getIsFull())
                 if (world.getSpace(groundItems[j].getPosition().x, groundItems[j].getPosition().y + 1).getBuildingTextureName() == "pine-tree-bottom")
@@ -1036,21 +1046,56 @@ void Game::update(sf::RenderWindow& window) {
     }
     for (int i = 0; i < currentSettlerCount; i++) {
         settlers[i].update(deltaTime);
-        if (settlers[i].getHasOrder() && settlers[i].getOrder().getOrderType() == "deconstruct" && settlers[i].getIsAtOrderLocation()) {
-            Vector2 position = settlers[i].getOrder().getPosition();
-            long int now = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now().time_since_epoch()).count();
-            if (settlers[i].canHit(now)) {
-                if (world.getSpace(position.x, position.y).hasTree)
-                    playSound("wood-chop");
-                else if (world.getSpace(position.x, position.y).hasBoulder)
-                    playSound("stone-hit");
-                settlers[i].setLastHit(now);
-                world.getSpace(position.x, position.y).takeDamage(25);
-                if (world.getSpace(position.x, position.y).canBuild()) {
-                    settlers[i].completedOrder();
-                    dropResources(position.x, position.y, world.getSpace(position.x, position.y).getBuildingTextureName());
+        if (settlers[i].getHasOrder() &&  settlers[i].getIsAtOrderLocation()) {
+            if (settlers[i].getOrder().getOrderType() == "deconstruct") {
+                Vector2 position = settlers[i].getOrder().getPosition();
+                long int now = chrono::duration_cast<chrono::milliseconds>(chrono::steady_clock::now().time_since_epoch()).count();
+                if (settlers[i].canHit(now)) {
+                    if (world.getSpace(position.x, position.y).hasTree)
+                        playSound("wood-chop");
+                    else if (world.getSpace(position.x, position.y).hasBoulder)
+                        playSound("stone-hit");
+                    settlers[i].setLastHit(now);
+                    world.getSpace(position.x, position.y).takeDamage(25);
+                    if (world.getSpace(position.x, position.y).canBuild()) {
+                        settlers[i].completedOrder();
+                        dropResources(position.x, position.y, world.getSpace(position.x, position.y).getBuildingTextureName());
+                    }
                 }
             }
+            else if (settlers[i].getOrder().getOrderType() == "haul") {
+                if (settlers[i].getIsCarrying()) {
+                    cout << "Settler has reached their position to dump" << endl;
+                    GroundItem newItem = settlers[i].drop();
+                    newItem.setPosition(*settlers[i].getPosition());
+                    addGroundItem(newItem);
+                    settlers[i].completedOrder();
+                }
+                else {
+                    cout << "Picked up" << endl;
+                    removeGroundItem(settlers[i].getOrder().getPosition());
+                    settlers[i].carry(getGroundItem(settlers[i].getOrder().getPosition()));
+                    settlers[i].completedOrder();
+                    settlers[i].giveOrder(Order("haul", getFreeDumpZonePosition(settlers[i].getItem()), "Fitness", 0));
+                }
+            }
+        }
+    }
+}
+void Game::removeGroundItem(Vector2 position) {
+    for (int i = 0; i < currentGroundItemIndex; i++) {
+        if (groundItems[i].getPosition().x == position.x && groundItems[i].getPosition().y == position.y) {
+            groundItems[i].setVisible(false);
+            //currentGroundItemIndex--;
+            cout << "Found" << endl;
+            return;
+        }
+    }
+}
+GroundItem Game::getGroundItem(Vector2 itemPosition) {
+    for (int i = 0; i < currentGroundItemIndex; i++) {
+        if (groundItems[i].getPosition().x == itemPosition.x && groundItems[i].getPosition().y == itemPosition.y) {
+            return groundItems[i];
         }
     }
 }

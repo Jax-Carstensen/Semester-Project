@@ -11,6 +11,7 @@ private:
 	Vector2 position;
 	Item item;
 	int count = 0;
+	bool visible = true;
 public:
 	GroundItem(){}
 	GroundItem(Item newItem, Vector2 newPosition, int newCount) {
@@ -28,5 +29,7 @@ public:
 	int getCount() { return count; }
 	void addToCount(int toAdd) { count += toAdd; }
 	void setCount(int newCount) { count = newCount; }
+	void setVisible(bool value) { visible = value; }
+	bool getIsVisible() { return visible; }
 };
 #endif

@@ -239,7 +239,9 @@ public:
     void addCraftableItem(string itemName);
     void addItem();
     void drawZone(sf::RenderWindow& window, Zone zone, sf::Color color);
+    GroundItem getGroundItem(Vector2 itemPosition);
     Vector2 getFreeDumpZonePosition(GroundItem item);
+    void removeGroundItem(Vector2 position);
 
     Vector2 GetDesktopResolution();
     //Returns a Vector2 containing the width and height of the user's monitor in pixels

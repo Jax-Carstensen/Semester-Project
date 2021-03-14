@@ -45,10 +45,14 @@ public:
 	~Character() {}
 	void carry(GroundItem toCarry) {
 		carrying = toCarry;
+		isCarrying = true;
 	}
-	void drop() {
+	GroundItem drop() {
 		isCarrying = false;
+		return carrying;
 	}
+	GroundItem getItem() { return carrying; }
+	bool getIsCarrying() { return isCarrying; }
 	void setLastHit(long int newLastHit) { lastHit = newLastHit; }
 	long int getLastHit() { return lastHit; }
 	bool canHit(long int time) { return time - lastHit >= millisecondsBetweenHits; }

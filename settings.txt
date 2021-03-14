@@ -1,2 +1,2 @@
-refresh-rate-index:6
+refresh-rate-index:4
 blend-tile-edges:true
