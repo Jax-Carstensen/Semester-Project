@@ -51,6 +51,7 @@ public:
 		isCarrying = false;
 		return carrying;
 	}
+	void setOrderPosition(Vector2 pos);
 	GroundItem getItem() { return carrying; }
 	bool getIsCarrying() { return isCarrying; }
 	void setLastHit(long int newLastHit) { lastHit = newLastHit; }

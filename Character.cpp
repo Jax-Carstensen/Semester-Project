@@ -48,6 +48,11 @@ void Character::calculateSpeed() {
 	millisecondsBetweenHits = 750 - (getSkill("Fitness")->getSkillValue() * 25);
 }
 
+void Character::setOrderPosition(Vector2 pos) {
+	order.setPosition(pos);
+	setGoal(pos);
+}
+
 void Character::setPosition(Vector2 newPosition) {
 	position = Vector2Float(newPosition.x, newPosition.y);
 }

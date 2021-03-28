@@ -24,6 +24,7 @@
 #include "Zombie.h"
 #include "Grids.h"
 #include "Zone.h"
+#include "StockpileItem.h"
 
 using namespace std;
 
@@ -40,7 +41,6 @@ Vector2 Game::GetDesktopResolution()
 }
 
 Game::Game() {
-    srand(NULL);
     GridItem grid = GridItem();
     int size = sizeof(grid);
     float sizeInMegabytes = (float)(size * gridSize * gridSize * 0.000001);
@@ -114,7 +114,7 @@ void Game::drawZone(sf::RenderWindow& window, Zone zone, sf::Color color) {
     window.draw(zoneText);
 }
 void Game::generateWorld() {
-    srand(time(NULL));
+    //srand(time(NULL));
     for (int x = 0; x < gridSize; x++) {
         for (int y = 0; y < gridSize; y++) {
             if (rnd(18))
@@ -230,28 +230,10 @@ void Game::generateWorld() {
 }
 void Game::roundTileEdges(int x, int y, string tileName) {
     if (world.getSpace(x, y).getTextureName() != tileName) {
-        if (positionWithinBounds(x - 1)) {
-            if (world.getSpace(x - 1, y).getTextureName() == tileName) {
-                //world.getSpace(x, y).deconstruct();
-                if (positionWithinBounds(y - 1) && world.getSpace(x, y - 1).getTextureName() == tileName)
-                    world.getSpace(x, y).addTextureDetail("top-left-" + tileName);
-                else if (positionWithinBounds(y + 1) && world.getSpace(x, y + 1).getTextureName() == tileName)
-                    world.getSpace(x, y).addTextureDetail("bottom-left-" + tileName);
-                else
-                    world.getSpace(x, y).addTextureDetail("left-" + tileName);
-            }
-        }
-        if (positionWithinBounds(x + 1)) {
-            if (world.getSpace(x + 1, y).getTextureName() == tileName) {
-                //world.getSpace(x, y).deconstruct();
-                if (positionWithinBounds(y - 1) && world.getSpace(x, y - 1).getTextureName() == tileName)
-                    world.getSpace(x, y).addTextureDetail("top-right-" + tileName);
-                else if (positionWithinBounds(y + 1) && world.getSpace(x, y + 1).getTextureName() == tileName)
-                    world.getSpace(x, y).addTextureDetail("bottom-right-" + tileName);
-                else
-                    world.getSpace(x, y).addTextureDetail("right-" + tileName);
-            }
-        }
+        if (positionWithinBounds(x - 1) && world.getSpace(x - 1, y).getTextureName() == tileName)
+            world.getSpace(x, y).addTextureDetail("left-" + tileName);
+        if (positionWithinBounds(x + 1) && world.getSpace(x + 1, y).getTextureName() == tileName)
+            world.getSpace(x, y).addTextureDetail("right-" + tileName);
         if (positionWithinBounds(y + 1) && world.getSpace(x, y + 1).getTextureName() == tileName)
             world.getSpace(x, y).addTextureDetail("bottom-" + tileName);
         if (positionWithinBounds(y - 1) && world.getSpace(x, y - 1).getTextureName() == tileName)
@@ -351,51 +333,6 @@ void Game::loadSettings() {
     inputFile.close();
 }
 void Game::loadResources() {
-    int textureLength = 42;
-    string* textureNames = new string[textureLength]{
-        "grass",
-        "dirt",
-        "boulder",
-        "boulder-2",
-        "boulder-3",
-        "x",
-        "wooden-wall-view-front",
-        "stone",
-        "plant",
-        "tree-bottom",
-        "settler",
-        "settlerFemale",
-        "iron-boulder",
-        "chop-icon",
-        "cut-icon",
-        "mine-icon",
-        "pine-tree-bottom",
-        "pine-tree-top",
-        "berry-bush",
-        "water",
-        "sand",
-        "left-sand",
-        "right-sand",
-        "top-sand",
-        "bottom-sand",
-        "top-left-sand",
-        "top-right-sand",
-        "bottom-right-sand",
-        "bottom-left-sand",
-        "log",
-        "cancel-icon",
-        "stone-shard",
-        "iron-shard",
-        "chest",
-        "left-dirt",
-        "right-dirt",
-        "top-dirt",
-        "bottom-dirt",
-        "top-left-dirt",
-        "top-right-dirt",
-        "bottom-right-dirt",
-        "bottom-left-dirt"
-    };
     int i, j, min;
     string temp;
     for (i = 0; i < textureLength - 1; i++) {
@@ -410,12 +347,15 @@ void Game::loadResources() {
     for (int j = 0; j < textureLength; j++) {
         addTexture(textureNames[j]);
     }
-    addItem();
+    addItems();
 }
-void Game::addItem() {
+void Game::addItems() {
+    //Adds all items to the game
     addItem("log", NULL, NULL, 0, "log");
     addItem("stone-shard", NULL, NULL, 0, "stone-shard");
     addItem("iron-shard", NULL, NULL, 0, "iron-shard");
+    
+    //Takes 8 lines to add each craftable item... Will need to be changed somehow
     string* a = new string[2];
     int* b = new int[2];
     a[0] = "log";
@@ -423,8 +363,15 @@ void Game::addItem() {
     b[0] = 20;
     b[1] = 2;
     addItem("chest", a, b, 2, "chest");
-
     addCraftableItem("chest");
+
+    //Adds all items that can be stored in your stockpile
+    addStockpileItem("log");
+    addStockpileItem("stone-shard");
+    addStockpileItem("iron-shard");
+}
+void Game::addStockpileItem(string itemName) {
+    stockpile[currentStockpileIndex++] = StockpileItem(itemName, 0);
 }
 void Game::resolutionCalculations() {
     resolution = GetDesktopResolution();
@@ -541,6 +488,12 @@ void Game::uiSetup() {
     loadingText.setFillColor(sf::Color::White);
     loadingText.setStyle(sf::Text::Bold);
 
+    itemCount.setFont(font);
+    itemCount.setString("2x");
+    itemCount.setCharacterSize(16);
+    itemCount.setFillColor(sf::Color::White);
+    itemCount.setStyle(sf::Text::Bold);
+
     settler1Name.setFont(font);
     settler1Name.setString("The quick brown fox jumped over the lazy dogs");
     settler1Name.setCharacterSize(32);
@@ -645,18 +598,11 @@ void Game::drawSettlerScene(sf::RenderWindow& window, sf::RectangleShape coverSe
     //window.draw(fpsCounter);
 }
 void Game::start() {
-    sf::SoundBuffer buffer;
-    buffer.loadFromFile("./sounds/wood-chop.wav");
-    sf::Sound sound;
-    sound.setBuffer(buffer);
-    sound.play();
-    buffer.loadFromFile("./sounds/stone-hit.wav");
-    
-    srand(time(NULL));
     resolutionCalculations();
     loadResources();
     uiSetup();
     loadSettings();
+    srand(time(NULL));
     settlers[0].rerollStats();
     settlers[0].setPosition(Vector2(0, 0));
     settler1Name.setString(settlers[0].getName());
@@ -729,28 +675,24 @@ void Game::manageGridItem(int x, int y) {
     }
 }
 void Game::giveOrders() {
-    int givenOrders = 0;
     int* orderIndexes = new int[currentSettlerCount];
     //Iterates over every settler
     for (int i = 0; i < currentSettlerCount; i++) {
         //Skip over that settler if they are already working on completing an order
         if (settlers[i].getHasOrder()) continue;
         //Iterate over all of the orders starting at 0
-        for (int j = givenOrders; j < currentOrderIndex; j++) {
-            //If that ord
+        for (int j = 0; j < currentOrderIndex; j++) {
+            //If that order can be given to the settler
             if (settlers[i].giveOrder(orders[j])) {
-                orderIndexes[givenOrders++] = j;
+                //Start at the order after the current one. Move every order that follows one place to the left
+                for (int k = j + 1; k < currentOrderIndex; k++) {
+                    orders[k - 1] = orders[k];
+                }
+                currentOrderIndex--;
+                break;
             }
         }
     }
-    if (givenOrders > 0) {
-        for (int j = givenOrders; j < currentOrderIndex; j++) {
-            orders[j - givenOrders] = orders[j];
-        }
-        currentOrderIndex -= givenOrders;
-
-    }
-    delete[] orderIndexes;
 }
 void Game::queueOrder(Order order) {
     orders[currentOrderIndex++] = order;
@@ -777,10 +719,22 @@ void Game::dropResources(int x, int y, string oldTextureName) {
     queueOrder(Order("haul", Vector2(x, y), "Fitness", 0));
 }
 void Game::addGroundItem(GroundItem item) {
-    groundItems[currentGroundItemIndex] = item;
-    groundItems[currentGroundItemIndex++].setVisible(true);
+    bool found = false;
+    for (int i = 0; i < currentGroundItemIndex; i++) {
+        if (groundItems[i].getPosition().x == item.getPosition().x && groundItems[i].getPosition().y == item.getPosition().y) {
+            if (groundItems[i].getItemName() == item.getItemName()) {
+                groundItems[i].addToCount(item.getCount());
+                found = true;
+                break;
+            }
+        }
+    }
+    if (!found) {
+        groundItems[currentGroundItemIndex] = item;
+        groundItems[currentGroundItemIndex++].setVisible(true);
+    }
 }
-void Game::draw(sf::RenderWindow& window) {
+/*void Game::draw(sf::RenderWindow& window) {
     int xStart = floor(offset.x * -1 / blockSize);
     int yStart = floor(offset.y * -1 / blockSize);
     for (int x = xStart; x < xStart + blocksPerScreen + 1; x++) {
@@ -820,6 +774,13 @@ void Game::draw(sf::RenderWindow& window) {
             getImageByName("settler").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
         else
             getImageByName("settlerFemale").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+    }
+    if (!escaped) {
+        if (inventoryOpen) {
+            placeholderText.setString("Your Items");
+            placeholderText.setPosition(screenSize.x * 0.8, screenSize.y * 0.12);
+            window.draw(placeholderText);
+        }
     }
     if (escaped) {
         if (settingsOpen) {
@@ -882,9 +843,176 @@ void Game::draw(sf::RenderWindow& window) {
     }
     window.draw(fpsCounter);
     window.draw(fpsAverage);
+}*/
+void Game::draw(sf::RenderWindow& window) {
+    int xStart = floor(offset.x * -1 / blockSize);
+    int yStart = floor(offset.y * -1 / blockSize);
+    int grassIndex = 0;
+    for (int x = xStart; x < xStart + blocksPerScreen + 1; x++) {
+        for (int y = yStart; y < (int)(yStart + (screenSize.y / blockSize) + 2); y++) {
+            if ((x * blockSize + offset.x > screenSize.x || y * blockSize + offset.y > screenSize.y) || (x * blockSize + offset.x < -blockSize || y * blockSize + offset.y < -blockSize)) {
+                continue;
+            }
+            getImageByName(world.getSpace(x, y).getTextureName()).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
+            if (blendTileEdges)
+                for (int i = 0; i < world.getSpace(x, y).getCurrentTextureDetailsCount(); i++)
+                    getImageByName(world.getSpace(x, y).getTextureDetailByIndex(i)).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
+            if (world.getSpace(x, y).getIsFull()) {
+                getImageByName(world.getSpace(x, y).getBuildingTextureName()).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
+                if (world.getSpace(x, y).getBuildingTextureName() == "pine-tree-bottom")
+                    getImageByName("pine-tree-top").draw(window, addVectors(world.getSpace(x, y - 1).getGlobalPosition(blockSize), offset));
+            }
+            if (y + 1 < gridSize)
+                if ((x * blockSize + offset.x > screenSize.x || (y + 1) * blockSize + offset.y > screenSize.y) || (x * blockSize + offset.x < -blockSize || (y + 1) * blockSize + offset.y < -blockSize))
+                    if (world.getSpace(x, y + 1).getIsFull() && world.getSpace(x, y + 1).getBuildingTextureName() == "pine-tree-bottom")
+                        getImageByName("pine-tree-top").draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
+            manageGridItem(x, y);
+            if (world.getSpace(x, y).isBeingDestroyed())
+                getImageByName("x").draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
+        }
+    }
+    drawZone(window, dumpingZone, sf::Color(0, 0, 255, 255 * 0.175));
+    for (int j = 0; j < currentGroundItemIndex; j++) {
+        if (groundItems[j].getIsVisible()) {
+            Vector2 itemPosition = addVectors(Vector2(groundItems[j].getPosition().x * blockSize, groundItems[j].getPosition().y * blockSize), offset);
+            getImageByName(groundItems[j].getTextureName()).draw(window, itemPosition);
+            itemCount.setString(to_string(groundItems[j].getCount()) + "x");
+            sf::Vector2f position(itemPosition.x + blockSize * 0.5 - itemCount.getGlobalBounds().width * 0.5, itemPosition.y);
+            itemCount.setPosition(position);
+            window.draw(itemCount);
+        }
+        if (positionWithinBounds(groundItems[j].getPosition().y + 1))
+            if (world.getSpace(groundItems[j].getPosition().x, groundItems[j].getPosition().y + 1).getIsFull())
+                if (world.getSpace(groundItems[j].getPosition().x, groundItems[j].getPosition().y + 1).getBuildingTextureName() == "pine-tree-bottom")
+                    getImageByName("pine-tree-top").draw(window, addVectors(Vector2(groundItems[j].getPosition().x * blockSize, groundItems[j].getPosition().y * blockSize), offset));
+    }
+    for (int i = 0; i < currentSettlerCount; i++) {
+        if (settlers[i].getIsMale())
+            getImageByName("settler").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+        else
+            getImageByName("settlerFemale").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+    }
+    if (!escaped) {
+        if (inventoryOpen) {
+            placeholderText.setString("Your Items");
+            placeholderText.setPosition(screenSize.x * 0.8, screenSize.y * 0.12);
+            window.draw(placeholderText);
+            int currentY = screenSize.y * 0.18;
+            sf::RectangleShape bg;
+            bg.setFillColor(sf::Color(0, 0, 0, 255 * 0.5));
+            bg.setSize(sf::Vector2f(screenSize.x * 0.2, screenSize.y * 0.04));
+            for (int i = 0; i < currentStockpileIndex; i++) {
+                if (stockpile[i].value >= 0) {
+                    bg.setPosition(sf::Vector2f(screenSize.x * 0.78, currentY - screenSize.y * 0.01));
+                    window.draw(bg);
+                    placeholderText.setString(to_string(stockpile[i].value) + "x");
+                    placeholderText.setPosition(screenSize.x * 0.85, currentY - screenSize.y * 0.005);
+                    window.draw(placeholderText);
+                    getImageByName(stockpile[i].name).draw(window, Vector2(screenSize.x * 0.8, currentY - screenSize.y * 0.035));
+                    currentY += screenSize.y * 0.0525;
+                }
+            }
+        }
+    }
+    if (escaped) {
+        if (settingsOpen) {
+            for (int i = 0; i < sizeof(settingsButtons) / sizeof(settingsButtons[0]); i++) {
+                settingsButtons[i].draw(window);
+            }
+            for (int j = 0; j < sizeof(settingsNames) / sizeof(settingsNames[0]); j++) {
+                string value = "true";
+                if (settingsNames[j] == "Tile Blending") {
+                    if (!blendTileEdges) value = "false";
+                }
+                else if (settingsNames[j] == "Refresh Rate") {
+                    value = to_string(availibleRefreshrates[currentRefreshRateIndex]);
+                }
+                else {
+                    cout << "Setting: " << settingsNames[j] << " has not been defined!" << endl;
+                }
+                //settingsButtons[k].setPosition(Vector2(screenSize.x * 0.35, screenSize.y * 0.12 * k + screenSize.y * 0.05));
+                placeholderText.setString(settingsNames[j] + ": " + value);
+                placeholderText.setPosition(screenSize.x * 0.5, screenSize.y * 0.12 * j + screenSize.y * 0.05);
+                window.draw(placeholderText);
+            }
+        }
+        else {
+            for (int i = 0; i < pauseMenuButtonsCount; i++) {
+                pauseMenuButtons[i].draw(window);
+            }
+            window.draw(fpsCounter);
+            window.draw(fpsAverage);
+            return;
+        }
+    }
+    else if (ordersOpen) {
+        for (int i = 0; i < orderIconsCount; i++) {
+            iconBackground.setPosition(sf::Vector2f(orderIconPositions[i].x, orderIconPositions[i].y));
+            window.draw(iconBackground);
+            getImageByName(orderIcons[i] + "-icon").draw(window, orderIconPositions[i]);
+        }
+    }
+    else if (craftingOpen) {
+        for (int i = 0; i < 8; i++) {
+            iconBackground.setPosition(sf::Vector2f(screenSize.x * 0.015, screenSize.y * 0.1 * i + screenSize.y * 0.1));
+            window.draw(iconBackground);
+            if (i < craftableItemsIndex) {
+                cout << "Drawing " << craftableItems[i] << endl;
+                getImageByName(craftableItems[i]).draw(window, Vector2(screenSize.x * 0.015, screenSize.y * 0.1 * i + screenSize.y * 0.1));
+            }
+        }
+    }
+    else {
+        for (int j = 0; j < 12; j++) {
+            buildButtons[j].draw(window);
+        }
+    }
+    if (selectedSettler)
+        window.draw(settlerTitleText);
+    if (mouseDown && order != "") {
+        //clickedRect.setPosition(clickedRect.getPosition().x + offset.x, clickedRect.getPosition().y + offset.y);
+        window.draw(clickedRect);
+    }
+    window.draw(fpsCounter);
+    window.draw(fpsAverage);
+}
+bool Game::groundItemAtPosition(Vector2 position) {
+    for (int i = 0; i < maxGroundItems; i++) {
+        if (groundItems[i].getPosition().x == position.x) {
+            if (groundItems[i].getPosition().y == position.y) {
+                return true;
+            }
+        }
+    }
+    return false;
 }
 Vector2 Game::getFreeDumpZonePosition(GroundItem item) {
-    return Vector2();
+    int startX = dumpingZone.getPosition().x;
+    int startY = dumpingZone.getPosition().y;
+    bool found = false;
+    int x, y;
+    for (x = startX; x < startX + dumpingZone.getDimensions().x; x++) {
+        for (y = startY; y < startY + dumpingZone.getDimensions().y; y++) {
+            if (groundItemExists(Vector2(x, y)) && getGroundItem(Vector2(x, y)).getItemName() == item.getItemName()) {
+                found = true;
+                break;
+            }
+            if (!groundItemAtPosition(Vector2(x, y))) {
+                found = true;
+                break;
+            }
+        }
+        if (found) break;
+    }
+    return Vector2(x, y);
+}
+void Game::addToStockpile(GroundItem item) {
+    for (int i = 0; i < maxStockpileItems; i++) {
+        if (stockpile[i].name == item.getItemName()) {
+            stockpile[i].value += item.getCount();
+            break;
+        }
+    }
 }
 void Game::update(sf::RenderWindow& window) {
     float currentTime = clock.restart().asSeconds();
@@ -937,6 +1065,10 @@ void Game::update(sf::RenderWindow& window) {
     mouseRect.setPosition(sf::Vector2f(mousePosition.x + -offset.x, mousePosition.y + -offset.y));
     if (keys.escape)
         escaped = true;
+    if (keys.i) {
+        keys.manageKey(8, false);
+        inventoryOpen = !inventoryOpen;
+    }
     if (escaped) {
         if (settingsOpen) {
             for (int i = 0; i < sizeof(settingsButtons) / sizeof(settingsButtons[0]); i++) {
@@ -1066,14 +1198,22 @@ void Game::update(sf::RenderWindow& window) {
             else if (settlers[i].getOrder().getOrderType() == "haul") {
                 if (settlers[i].getIsCarrying()) {
                     cout << "Settler has reached their position to dump" << endl;
-                    GroundItem newItem = settlers[i].drop();
-                    newItem.setPosition(*settlers[i].getPosition());
-                    addGroundItem(newItem);
-                    settlers[i].completedOrder();
+                    Vector2 toGo = getFreeDumpZonePosition(settlers[i].getItem());
+                    Vector2 pos = settlers[i].getOrder().getPosition();
+                    if (pos.x == toGo.x && pos.y == toGo.y) {
+                        GroundItem newItem = settlers[i].drop();
+                        newItem.setPosition(*settlers[i].getPosition());
+                        addGroundItem(newItem);
+                        addToStockpile(newItem);
+                        settlers[i].completedOrder();
+                    }
+                    else {
+                        settlers[i].setOrderPosition(toGo);
+                    }
                 }
                 else {
                     cout << "Picked up" << endl;
-                    removeGroundItem(settlers[i].getOrder().getPosition());
+                    groundItemsToRemove[groundItemsToRemoveCount++] = settlers[i].getOrder().getPosition();
                     settlers[i].carry(getGroundItem(settlers[i].getOrder().getPosition()));
                     settlers[i].completedOrder();
                     settlers[i].giveOrder(Order("haul", getFreeDumpZonePosition(settlers[i].getItem()), "Fitness", 0));
@@ -1081,12 +1221,27 @@ void Game::update(sf::RenderWindow& window) {
             }
         }
     }
+    removeGroundItems();
+}
+void Game::removeGroundItems() {
+    for (int i = 0; i < groundItemsToRemoveCount; i++) {
+        for (int j = 0; j < currentGroundItemIndex; j++) {
+            if (groundItems[j].getPosition().x == groundItemsToRemove[i].x && groundItems[j].getPosition().y == groundItemsToRemove[i].y) {
+                for (int k = j + 1; k < currentGroundItemIndex; k++) {
+                    groundItems[k - 1] = groundItems[k];
+                }
+                currentGroundItemIndex--;
+                break;
+            }
+        }
+    }
+    groundItemsToRemoveCount = 0;
 }
 void Game::removeGroundItem(Vector2 position) {
     for (int i = 0; i < currentGroundItemIndex; i++) {
         if (groundItems[i].getPosition().x == position.x && groundItems[i].getPosition().y == position.y) {
             groundItems[i].setVisible(false);
-            //currentGroundItemIndex--;
+            currentGroundItemIndex--;
             cout << "Found" << endl;
             return;
         }
@@ -1098,6 +1253,14 @@ GroundItem Game::getGroundItem(Vector2 itemPosition) {
             return groundItems[i];
         }
     }
+}
+bool Game::groundItemExists(Vector2 itemPosition) {
+    for (int i = 0; i < currentGroundItemIndex; i++) {
+        if (groundItems[i].getPosition().x == itemPosition.x && groundItems[i].getPosition().y == itemPosition.y) {
+            return true;
+        }
+    }
+    return false;
 }
 void Game::playSound(string fileName) {
     buffers[currentSoundBuffer].loadFromFile("./sounds/" + fileName + ".wav");

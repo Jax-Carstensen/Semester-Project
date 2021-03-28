@@ -1,5 +1,5 @@
-#ifndef SOUND_H
-#define SOUND_H
+#ifndef VECTOR2_H
+#define VECTOR2_H
 
 class Vector2 {
 public:

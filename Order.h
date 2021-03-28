@@ -33,5 +33,8 @@ public:
 	string getOrderType() {
 		return orderType;
 	}
+	void setPosition(Vector2 newPosition) {
+		position = newPosition;
+	}
 };
 #endif

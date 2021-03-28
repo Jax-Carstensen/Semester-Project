@@ -27,6 +27,7 @@
 #include "Order.h"
 #include "Sound.h"
 #include "Zone.h"
+#include "StockpileItem.h"
 
 using namespace std;
 
@@ -43,7 +44,8 @@ private:
     const int maxAnimals = 100;
     const int maxZombies = 100;
     const int maxTextures = 150;
-    const int maxItems = 150;
+    const static int maxItems = 150;
+    const static int maxStockpileItems = maxItems;
     const static int maxGroundItems = 250;
     const static int orderIconsCount = 4;
     const static int maxSoundBuffers = 30;
@@ -67,6 +69,10 @@ public:
     Vector2 offset = Vector2();
     Grid world = Grid(gridSize);
 
+    Vector2 groundItemsToRemove[10];
+    int groundItemsToRemoveCount = 0;
+
+
     Animal* animals = new Animal[maxAnimals];
     Character* settlers = new Character[maxSettlers];
     Zombie* zombies = new Zombie[maxZombies];
@@ -87,6 +93,7 @@ public:
     bool generatedWorld = false;
     bool craftingOpen = false;
     int craftableItemsIndex = 0;
+    bool inventoryOpen = true;
     string craftableItems[craftableItemsCount];
 
     sf::Text fpsCounter;
@@ -109,6 +116,7 @@ public:
 
     Button* buildButtons = new Button[12];
     Button* pauseMenuButtons = new Button[pauseMenuButtonsCount];
+    StockpileItem stockpile[maxStockpileItems];
     string buildButtonNames[12] = {
         "Orders",
         "Craft",  
@@ -123,6 +131,43 @@ public:
         "Ship",
         "Temperature"
     };
+    int textureLength = 34;
+    string* textureNames = new string[textureLength]{
+        "grass",
+        "dirt",
+        "boulder",
+        "boulder-2",
+        "boulder-3",
+        "x",
+        "wooden-wall-view-front",
+        "stone",
+        "plant",
+        "tree-bottom",
+        "settler",
+        "settlerFemale",
+        "iron-boulder",
+        "chop-icon",
+        "cut-icon",
+        "mine-icon",
+        "pine-tree-bottom",
+        "pine-tree-top",
+        "berry-bush",
+        "water",
+        "sand",
+        "left-sand",
+        "right-sand",
+        "top-sand",
+        "bottom-sand",
+        "log",
+        "cancel-icon",
+        "stone-shard",
+        "iron-shard",
+        "chest",
+        "left-dirt",
+        "right-dirt",
+        "top-dirt",
+        "bottom-dirt",
+    };
     string orderIcons[orderIconsCount] = {
         "cancel",
         "chop",
@@ -131,8 +176,7 @@ public:
     };
     Vector2 orderIconPositions[orderIconsCount];
     string tilesToRound[1] = {
-        "sand",
-        //"dirt"
+        "dirt"
     };
     string settingsNames[2] = {
         "Tile Blending",
@@ -168,6 +212,8 @@ public:
     int zoneStartY = 0;
     int zoneWidth = 0;
     int zoneHeight = 0;
+
+    int currentStockpileIndex = 0;
 
     //Settings
     bool blendTileEdges = true;
@@ -209,6 +255,7 @@ public:
     sf::RectangleShape* settlerStatBars = new sf::RectangleShape[12];
     sf::RectangleShape iconBackground;
     sf::Text loadingText;
+    sf::Text itemCount;
     Button rerollStatsButton = Button("Reroll Stats", Vector2(screenSize.x * 0.8, screenSize.y * 0.05), Vector2(screenSize.x * 0.15, screenSize.y * 0.075), font, "reroll", sf::Color(30, 30, 30));
     Button startGame = Button("Start Game", Vector2(screenSize.x * 0.0125, screenSize.y * 0.9), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "reroll", sf::Color(0, 255, 0));
 
@@ -237,11 +284,16 @@ public:
     void playSound(string fileName);
     void addSound(string fileName);
     void addCraftableItem(string itemName);
-    void addItem();
+    void addItems();
     void drawZone(sf::RenderWindow& window, Zone zone, sf::Color color);
     GroundItem getGroundItem(Vector2 itemPosition);
     Vector2 getFreeDumpZonePosition(GroundItem item);
     void removeGroundItem(Vector2 position);
+    void removeGroundItems();
+    bool groundItemAtPosition(Vector2 position);
+    void addToStockpile(GroundItem item);
+    void addStockpileItem(string itemName);
+    bool groundItemExists(Vector2 itemPosition);
 
     Vector2 GetDesktopResolution();
     //Returns a Vector2 containing the width and height of the user's monitor in pixels

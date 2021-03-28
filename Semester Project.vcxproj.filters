@@ -83,5 +83,8 @@
     <ClInclude Include="Zone.h">
       <Filter>Source Files</Filter>
     </ClInclude>
+    <ClInclude Include="StockpileItem.h">
+      <Filter>Source Files</Filter>
+    </ClInclude>
   </ItemGroup>
 </Project>

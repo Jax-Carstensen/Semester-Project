@@ -56,31 +56,31 @@ C:\Users\jaxca\Desktop\Semester Project\Button.h(74,107): warning C4244: 'argume
 C:\Users\jaxca\Desktop\Semester Project\Button.h(83,53): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Texture.h(4,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
 C:\Users\jaxca\Desktop\Semester Project\Texture.h(17,39): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(66,68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(66,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(186,99): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(186,54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(186,150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(186,128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(186,216): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(187,99): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(187,54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(187,150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(187,128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(187,215): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(188,97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(188,52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(188,149): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(188,127): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(188,200): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(212,96): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(212,76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(212,147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(212,126): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(213,89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(213,66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(213,140): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.h(213,118): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(68,68): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(68,47): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(232,99): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(232,54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(232,150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(232,128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(232,216): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(233,99): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(233,54): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(233,150): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(233,128): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(233,215): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(234,97): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(234,52): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(234,149): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(234,127): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(234,200): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(259,96): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(259,76): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(259,147): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(259,126): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(260,89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(260,66): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(260,140): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.h(260,118): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   The contents of <filesystem> are available only with C++17 or later.
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(61,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(107,104): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
@@ -115,334 +115,372 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(112,59): warning C4244: 'argume
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(117,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(151,26): warning C4305: 'argument': truncation from 'double' to 'float'
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(431,60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(431,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(432,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(433,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(439,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(440,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(445,181): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(449,30): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(450,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(378,60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(378,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(379,32): warning C4244: '=': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(380,17): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(386,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(387,17): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(392,181): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(396,30): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(397,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(450,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(397,41): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(451,56): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(452,120): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(452,77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(452,172): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(452,230): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(453,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(453,74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(453,169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(453,219): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(454,116): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(454,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(454,168): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(454,222): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(455,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(455,74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(455,169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(455,219): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(481,55): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(490,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(496,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(398,56): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(399,120): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(399,77): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(399,172): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(399,230): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(400,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(400,74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(400,169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(400,219): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(401,116): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(401,73): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(401,168): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(401,222): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(402,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(402,74): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(402,169): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(402,219): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(428,55): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(437,25): warning C4244: '=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(443,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(496,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(443,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(504,79): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(451,79): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(504,67): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(451,67): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(508,75): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(455,75): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(508,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(455,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(512,36): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(516,93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(516,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(520,93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(520,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(534,65): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(459,36): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(463,93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(463,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(467,93): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(467,61): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(481,65): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(549,97): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(502,97): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(549,53): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(502,53): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(556,97): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(509,97): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(556,53): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(509,53): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(563,97): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(516,97): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(563,53): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(516,53): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(573,148): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(526,148): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(573,129): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(526,129): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(578,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(581,64): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(531,18): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(534,64): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(583,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(536,70): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(583,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(536,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(639,39): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(655,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(670,86): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(592,39): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(605,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(616,86): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(670,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(616,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(671,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(617,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(671,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(617,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(672,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(618,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(672,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(618,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(673,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(619,86): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(673,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(619,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(674,59): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(620,59): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(675,59): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(621,59): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(676,59): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(622,59): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(708,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(708,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(712,45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(778,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(779,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(811,60): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(814,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(816,99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(836,89): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(836,58): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(851,99): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(654,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(654,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(658,45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(848,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(849,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(875,60): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(881,123): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(851,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(881,68): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(858,98): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(892,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(894,99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(899,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(899,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(901,26): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(903,52): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(904,70): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(858,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(904,50): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(862,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(862,85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(889,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(930,75): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(907,79): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(930,58): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(907,62): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(931,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(910,79): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(910,62): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(912,105): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(912,89): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(913,54): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(936,89): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(936,58): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(951,99): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(931,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(951,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(962,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(958,98): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(962,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(958,66): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(964,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(964,124): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(964,134): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(962,117): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(962,85): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1024,22): warning C4244: 'argument': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1065,75): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(964,90): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1065,58): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(973,138): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1066,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(973,78): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1066,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(999,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1101,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(999,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1101,74): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1002,100): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1103,80): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1103,124): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1103,134): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1002,75): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1103,90): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1014,108): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1112,138): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1014,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1112,78): warning C4244: 'argument': conversion from 'double' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1023,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1138,53): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1023,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1138,42): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1027,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1029,45): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1031,39): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1033,45): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1035,39): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1046,30): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1141,100): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1141,75): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1153,108): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1153,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1162,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1162,46): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
+          with
+          [
+              T=float
+          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1166,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,45): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,39): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1172,45): warning C4244: '+=': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1174,39): warning C4244: '-=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1185,30): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
           with
           [
               _Rep=__int64
           ]
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(89): warning C4715: 'Game::getItemByName': not all control paths return a value
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(97): warning C4715: 'Game::getImageByName': not all control paths return a value
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1095): warning C4715: 'Game::getGroundItem': not all control paths return a value
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1257): warning C4715: 'Game::getGroundItem': not all control paths return a value
   Semester Project.vcxproj -> C:\Users\jaxca\Desktop\Semester Project\Debug\Semester Project.exe

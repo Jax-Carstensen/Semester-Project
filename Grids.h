@@ -10,7 +10,7 @@ private:
     bool collidable = false;
     string textureName = "";
     int textureDetailCount = 0;
-    string textureDetails[3];
+    string textureDetails[4];
     string buildingTextureName;
     Vector2 position = Vector2();
     int maxHealth = 0;
@@ -66,7 +66,7 @@ public:
         return !occupied;
     }
     void addTextureDetail(string textureDetailName) {
-        if (textureDetailCount == 2) return;
+        if (textureDetailCount == 3) return;
         textureDetails[textureDetailCount] = textureDetailName;
         textureDetailCount++;
     }
