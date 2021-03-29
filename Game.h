@@ -131,7 +131,7 @@ public:
         "Ship",
         "Temperature"
     };
-    int textureLength = 34;
+    int textureLength = 33;
     string* textureNames = new string[textureLength]{
         "grass",
         "dirt",
@@ -141,7 +141,7 @@ public:
         "x",
         "wooden-wall-view-front",
         "stone",
-        "plant",
+        "bush",
         "tree-bottom",
         "settler",
         "settlerFemale",
@@ -151,22 +151,21 @@ public:
         "mine-icon",
         "pine-tree-bottom",
         "pine-tree-top",
-        "berry-bush",
         "water",
         "sand",
-        "left-sand",
-        "right-sand",
-        "top-sand",
-        "bottom-sand",
         "log",
         "cancel-icon",
         "stone-shard",
         "iron-shard",
         "chest",
-        "left-dirt",
-        "right-dirt",
-        "top-dirt",
-        "bottom-dirt",
+        "boar",
+        "snake",
+        "moon-grass",
+        "moon-tree",
+        "moon-zombie",
+        "morto-the-moon-god",
+        "orange-flower",
+        "venus-flytrap",
     };
     string orderIcons[orderIconsCount] = {
         "cancel",
@@ -175,12 +174,9 @@ public:
         "mine"
     };
     Vector2 orderIconPositions[orderIconsCount];
-    string tilesToRound[1] = {
-        "dirt"
-    };
     string settingsNames[2] = {
-        "Tile Blending",
-        "Refresh Rate"
+        "Refresh Rate",
+        "Sound Volume"
     };
     string splashText[3] = {
         "Game not running well? Change some of the options in settings.",
@@ -216,7 +212,6 @@ public:
     int currentStockpileIndex = 0;
 
     //Settings
-    bool blendTileEdges = true;
     int currentRefreshRateIndex = 0;
     int availibleRefreshrates[7] = {
         60,
@@ -227,10 +222,21 @@ public:
         240,
         360,
     };
+    bool changedVolume = false;
+    int currentVolumeLevelIndex = 4;
+    int volumeLevels[5] = {
+        0,
+        25,
+        50,
+        75,
+        100
+    };
+
+    bool joined = false;
 
     Button settingsButtons[3] = {
-        Button("Change", Vector2(screenSize.x * 0.25 - (screenSize.x * 0.125 * 0.5), screenSize.y * 0.1), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "change-tile-blending", sf::Color(30, 30, 30, 255 * 0.85), 28),
-        Button("Change", Vector2(screenSize.x * 0.25 - (screenSize.x * 0.125 * 0.5), screenSize.y * 0.3), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "change-refresh-rate", sf::Color(30, 30, 30, 255 * 0.85), 28),
+        Button("Change", Vector2(screenSize.x * 0.25 - (screenSize.x * 0.125 * 0.5), screenSize.y * 0.1), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "change-refresh-rate", sf::Color(30, 30, 30, 255 * 0.85), 28),
+        Button("Change", Vector2(screenSize.x * 0.25 - (screenSize.x * 0.125 * 0.5), screenSize.y * 0.3), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "change-volume-level", sf::Color(30, 30, 30, 255 * 0.85), 28),
         Button("Apply", Vector2(screenSize.x * 0.5 - (screenSize.x * 0.125 * 0.5), screenSize.y * 0.85), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "apply", sf::Color(30, 30, 30, 255 * 0.85), 28),
     };
 

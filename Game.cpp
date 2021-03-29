@@ -117,16 +117,26 @@ void Game::generateWorld() {
     //srand(time(NULL));
     for (int x = 0; x < gridSize; x++) {
         for (int y = 0; y < gridSize; y++) {
-            if (rnd(18))
+            /*if (rnd(18))
                 world.setSpace(x, y, new GridItem("dirt", Vector2(x, y)));
-            else
+            else*/
                 world.setSpace(x, y, new GridItem("grass", Vector2(x, y)));
             //75% chance that something will be placed here
             if (rand() % 100 <= 75) {
-                if (rnd(3)) {
-                    if (world.getSpace(x, y).canBuild())
-                        world.getSpace(x, y).buildItem("berry-bush");
+                
+                //10% chance to spawn basic foliage
+                if (rnd(10)) {
+                    int value = rndNum(100);
+                    if (world.getSpace(x, y).canBuild()) {
+                        if (value <= 33)
+                            world.getSpace(x, y).buildItem("bush");
+                        else if (value <= 67)
+                            world.getSpace(x, y).buildItem("orange-flower");
+                        else if (value <= 100)
+                            world.getSpace(x, y).buildItem("venus-flytrap");
+                    }
                 }
+                //35% chance to build a tree
                 else if (rnd(35)) {
                     if (world.getSpace(x, y).canBuild()) {
                         if (rnd(50))
@@ -135,7 +145,8 @@ void Game::generateWorld() {
                             world.getSpace(x, y).addTree("pine");
                     }
                 }
-                else if (rnd(3.5)) {
+                //4% chance to generate boulder
+                else if (rnd(4)) {
                     if (world.getSpace(x, y).canBuild()) {                 
                         int value = rndNum(100);
                         if (rnd(78))
@@ -148,7 +159,8 @@ void Game::generateWorld() {
                         else
                             world.getSpace(x, y).addBoulder("iron-boulder");
                     }
-                }else if (rnd(0.0001)) {
+                //0.0001% chance to generate a pond
+                }else if (rnd(0.00001)) {
                     world.getSpace(x, y).deconstruct();
                     world.getSpace(x, y).setTexture("water");
                     int size = ((int)(rndNum(13) / 2) + 2);
@@ -219,26 +231,9 @@ void Game::generateWorld() {
                     }
                 }
             }
-            if (blendTileEdges) {
-                for (int j = 0; j < sizeof(tilesToRound) / sizeof(tilesToRound[0]); j++) {
-                    roundTileEdges(x, y, tilesToRound[j]);
-                }
-            }
         }
     }
     generatedWorld = true;
-}
-void Game::roundTileEdges(int x, int y, string tileName) {
-    if (world.getSpace(x, y).getTextureName() != tileName) {
-        if (positionWithinBounds(x - 1) && world.getSpace(x - 1, y).getTextureName() == tileName)
-            world.getSpace(x, y).addTextureDetail("left-" + tileName);
-        if (positionWithinBounds(x + 1) && world.getSpace(x + 1, y).getTextureName() == tileName)
-            world.getSpace(x, y).addTextureDetail("right-" + tileName);
-        if (positionWithinBounds(y + 1) && world.getSpace(x, y + 1).getTextureName() == tileName)
-            world.getSpace(x, y).addTextureDetail("bottom-" + tileName);
-        if (positionWithinBounds(y - 1) && world.getSpace(x, y - 1).getTextureName() == tileName)
-            world.getSpace(x, y).addTextureDetail("top-" + tileName);
-    }
 }
 void Game::addCraftableItem(string itemName) {
     cout << "Adding" << itemName << endl;
@@ -268,16 +263,17 @@ void Game::manageClick(string function) {
         preparingCloseWindow = false;
         ordersOpen = false;
     }
-    else if (function == "change-tile-blending") {
-        blendTileEdges = !blendTileEdges;
-        if (blendTileEdges != true && blendTileEdges != false)
-            blendTileEdges = true;
-    }
     else if (function == "change-refresh-rate") {
         currentRefreshRateIndex++;
         if (currentRefreshRateIndex >= sizeof(availibleRefreshrates) / sizeof(availibleRefreshrates[0]))
             currentRefreshRateIndex = 0;
         changeFramerateLimit = true;
+    }
+    else if (function == "change-volume-level") {
+        currentVolumeLevelIndex++;
+        if (currentVolumeLevelIndex >= sizeof(volumeLevels) / sizeof(volumeLevels[0]))
+            currentVolumeLevelIndex = 0;
+        changedVolume = true;
     }
     else if (function == "chop")
         order = "chop";
@@ -289,14 +285,12 @@ void Game::manageClick(string function) {
         cout << "Function: " << function << " has not been handled! Please change this in the manageClick function" << endl;
 }
 void Game::manageSetting(string settingName, string settingValue) {
-    cout << "Managing: " << settingName << " with a value of " << settingValue << endl;
     if (settingName == "refresh-rate-index") {
         currentRefreshRateIndex = stoi(settingValue);
     }
-    else if (settingName == "blend-tile-edges") {
-        blendTileEdges = true;
-        if (settingValue == "false")
-            blendTileEdges = false;
+    else if (settingName == "volume-index") {
+        currentVolumeLevelIndex = stoi(settingValue);
+        changedVolume = true;
     }
 }
 void Game::saveSettings() {
@@ -304,17 +298,13 @@ void Game::saveSettings() {
     ofstream outputFile;
     outputFile.open(settingsSaveLocation, ofstream::out, ofstream::trunc);
     outputFile << "refresh-rate-index:" + to_string(currentRefreshRateIndex) << endl;
-    string blend = "true";
-    if (!blendTileEdges)
-        blend = "false";
-    outputFile << "blend-tile-edges:" + blend << endl;
+    outputFile << "volume-index:" + to_string(currentVolumeLevelIndex) << endl;
     outputFile.close();
 }
 void Game::loadSettings() {
     ifstream inputFile;
     inputFile.open(settingsSaveLocation);
     if (inputFile.good()) {
-        cout << "Good" << endl;
         string str;
         while (getline(inputFile, str)) {
             if (str.find(':') != string::npos) {
@@ -323,11 +313,9 @@ void Game::loadSettings() {
         }
     }
     else {
-        cout << "Bad" << endl;
         ofstream createFile;
         createFile.open(settingsSaveLocation);
         createFile << "refresh-rate-index:0" << endl;
-        createFile << "blend-tile-edges:true" << endl;
         createFile.close();
     }
     inputFile.close();
@@ -636,13 +624,16 @@ void Game::start() {
             else {
                 if (!generatedWorld)
                     drawLoadingScreen(window);
-                else
+                else {
+                    if (!joined) {
+                        generatingThread.join();
+                        joined = true;
+                    }
                     draw(window);
+                }
             }
             window.display();
         }
-        else
-            generatingThread.join();
     }
 }
 string Game::getRandomTooltip() {
@@ -854,9 +845,6 @@ void Game::draw(sf::RenderWindow& window) {
                 continue;
             }
             getImageByName(world.getSpace(x, y).getTextureName()).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
-            if (blendTileEdges)
-                for (int i = 0; i < world.getSpace(x, y).getCurrentTextureDetailsCount(); i++)
-                    getImageByName(world.getSpace(x, y).getTextureDetailByIndex(i)).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
             if (world.getSpace(x, y).getIsFull()) {
                 getImageByName(world.getSpace(x, y).getBuildingTextureName()).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
                 if (world.getSpace(x, y).getBuildingTextureName() == "pine-tree-bottom")
@@ -921,16 +909,15 @@ void Game::draw(sf::RenderWindow& window) {
             }
             for (int j = 0; j < sizeof(settingsNames) / sizeof(settingsNames[0]); j++) {
                 string value = "true";
-                if (settingsNames[j] == "Tile Blending") {
-                    if (!blendTileEdges) value = "false";
-                }
-                else if (settingsNames[j] == "Refresh Rate") {
+                if (settingsNames[j] == "Refresh Rate") {
                     value = to_string(availibleRefreshrates[currentRefreshRateIndex]);
+                }
+                else if (settingsNames[j] == "Sound Volume") {
+                    value = to_string(volumeLevels[currentVolumeLevelIndex]);
                 }
                 else {
                     cout << "Setting: " << settingsNames[j] << " has not been defined!" << endl;
                 }
-                //settingsButtons[k].setPosition(Vector2(screenSize.x * 0.35, screenSize.y * 0.12 * k + screenSize.y * 0.05));
                 placeholderText.setString(settingsNames[j] + ": " + value);
                 placeholderText.setPosition(screenSize.x * 0.5, screenSize.y * 0.12 * j + screenSize.y * 0.05);
                 window.draw(placeholderText);
@@ -1056,6 +1043,12 @@ void Game::update(sf::RenderWindow& window) {
         window.setFramerateLimit(availibleRefreshrates[currentRefreshRateIndex]);
         changeFramerateLimit = false;
     }
+    if (changedVolume) {
+        for (int i = 0; i < maxSoundBuffers; i++) {
+            soundObjs[i].setVolume(volumeLevels[currentVolumeLevelIndex]);
+        }
+        changedVolume = false;
+    }
     if (choosingSettlers)
         return;
     if (!ordersOpen) order = "";
@@ -1159,18 +1152,18 @@ void Game::update(sf::RenderWindow& window) {
             zoneWidth = newX / blockSize;
             zoneHeight = newY / blockSize;
             clickedRect.setSize(sf::Vector2f(newX, newY));
-        }
+        }    
     }
     if (order == "") {
         float movementAmount = screenSize.x * 0.15 * deltaTime * 1.5;
         if (keys.w)
-            offset.y += movementAmount * 0.7;
+            offset.y += movementAmount * deltaTime * 300;
         if (keys.s)
-            offset.y -= movementAmount;
+            offset.y += -movementAmount * deltaTime * 300;
         if (keys.a)
-            offset.x += movementAmount * 0.7;
+            offset.x += movementAmount * deltaTime * 300;
         if (keys.d)
-            offset.x -= movementAmount;
+            offset.x += -movementAmount * deltaTime * 300;
         offset.x = min(offset.x, 0);
         offset.y = min(offset.y, 0);
         offset.x = max(offset.x, -1 * blockSize * (gridSize - blocksPerScreen));
@@ -1197,7 +1190,6 @@ void Game::update(sf::RenderWindow& window) {
             }
             else if (settlers[i].getOrder().getOrderType() == "haul") {
                 if (settlers[i].getIsCarrying()) {
-                    cout << "Settler has reached their position to dump" << endl;
                     Vector2 toGo = getFreeDumpZonePosition(settlers[i].getItem());
                     Vector2 pos = settlers[i].getOrder().getPosition();
                     if (pos.x == toGo.x && pos.y == toGo.y) {
@@ -1212,7 +1204,6 @@ void Game::update(sf::RenderWindow& window) {
                     }
                 }
                 else {
-                    cout << "Picked up" << endl;
                     groundItemsToRemove[groundItemsToRemoveCount++] = settlers[i].getOrder().getPosition();
                     settlers[i].carry(getGroundItem(settlers[i].getOrder().getPosition()));
                     settlers[i].completedOrder();

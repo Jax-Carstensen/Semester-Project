@@ -9,8 +9,6 @@ class GridItem {
 private:
     bool collidable = false;
     string textureName = "";
-    int textureDetailCount = 0;
-    string textureDetails[4];
     string buildingTextureName;
     Vector2 position = Vector2();
     int maxHealth = 0;
@@ -24,12 +22,6 @@ public:
     GridItem(string newTextureName, Vector2 newPosition) {
         textureName = newTextureName;
         position = newPosition;
-    }
-    int getCurrentTextureDetailsCount() {
-        return textureDetailCount;
-    }
-    string getTextureDetailByIndex(int index) {
-        return textureDetails[index];
     }
     GridItem() {}
     ~GridItem() {}
@@ -64,11 +56,6 @@ public:
     }
     bool canBuild() {
         return !occupied;
-    }
-    void addTextureDetail(string textureDetailName) {
-        if (textureDetailCount == 3) return;
-        textureDetails[textureDetailCount] = textureDetailName;
-        textureDetailCount++;
     }
     void setTexture(string newTextureName) {
         textureName = newTextureName;
