@@ -3,6 +3,7 @@
 
 #include <iostream>
 #include "Vector2.h"
+#include "Grids.h"
 
 using namespace std;
 
@@ -17,7 +18,14 @@ public:
 	~AI() {}
 	float currentX, currentY;
 	bool hasBeenSetup = false;
-	void setGoal(Vector2 newGoal) { goal = newGoal; pathfinding = true; }
+	void setGoal(Vector2 newGoal, Grid* grid) { 
+		goal = newGoal; 
+		pathfinding = true;
+		calculatePath(grid);
+	}
+	void calculatePath(Grid* grid) {
+
+	}
 	bool getIsPathfinding() { return pathfinding; }
 	void setup(Vector2Float newPosition) {
 		position = newPosition;

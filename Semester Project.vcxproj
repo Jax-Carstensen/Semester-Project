@@ -161,6 +161,7 @@
     <ClInclude Include="GroundItem.h" />
     <ClInclude Include="Item.h" />
     <ClInclude Include="Order.h" />
+    <ClInclude Include="PathNode.h" />
     <ClInclude Include="SettingsItem.h" />
     <ClInclude Include="Skill.h" />
     <ClInclude Include="Image.h" />

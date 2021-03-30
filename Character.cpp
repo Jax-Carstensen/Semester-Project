@@ -7,10 +7,13 @@
 #include <stdlib.h>
 #include <fstream>
 #include <string>
+#include "Grids.h"
 
 using namespace std;
 
-void Character::setGoal(Vector2 newGoal) { characterAi.setGoal(newGoal); }
+void Character::setGoal(Vector2 newGoal, Grid* grid) { 
+	characterAi.setGoal(newGoal, grid); 
+}
 void Character::setName(string newName) { name = newName; }
 string Character::getName() { return name; }
 bool Character::getIsMale() { return isMale; }
@@ -48,9 +51,9 @@ void Character::calculateSpeed() {
 	millisecondsBetweenHits = 750 - (getSkill("Fitness")->getSkillValue() * 25);
 }
 
-void Character::setOrderPosition(Vector2 pos) {
+void Character::setOrderPosition(Vector2 pos, Grid* grid) {
 	order.setPosition(pos);
-	setGoal(pos);
+	setGoal(pos, grid);
 }
 
 void Character::setPosition(Vector2 newPosition) {
@@ -62,7 +65,7 @@ void Character::completedOrder() {
 	reachedLocation = false;
 }
 
-bool Character::giveOrder(Order newOrder) {
+bool Character::giveOrder(Order newOrder, Grid* grid) {
 	if (hasOrder) return false;
 	int level = 0;
 	for (int i = 0; i < 12; i++) {
@@ -74,13 +77,13 @@ bool Character::giveOrder(Order newOrder) {
 	if (level >= newOrder.getSkillRequirementLevel()) {
 		hasOrder = true;
 		order = newOrder;
-		characterAi.setGoal(order.getPosition());
+		characterAi.setGoal(order.getPosition(), grid);
 		return true;
 	}
 	return false;
 }
 
-void Character::update(float &deltaTime) {
+void Character::update(float &deltaTime, Grid* grid) {
 	if (!characterAi.hasBeenSetup)
 		characterAi.setup(position);
 	
@@ -100,7 +103,7 @@ void Character::update(float &deltaTime) {
 			newGoal.y = max(newGoal.y, 0);
 			newGoal.x = min(newGoal.x, 256);
 			newGoal.y = min(newGoal.y, 256);
-			characterAi.setGoal(newGoal);
+			characterAi.setGoal(newGoal, grid);
 		}
 	}
 	if (reachedLocation) {

@@ -18,6 +18,7 @@ public:
     bool occupied = false;
     bool hasTree = false;
     bool hasBoulder = false;
+    bool walkable = true;
     //bool beingDestroyed = false;
     GridItem(string newTextureName, Vector2 newPosition) {
         textureName = newTextureName;
@@ -35,6 +36,9 @@ public:
         if (itemName != "plant")
             collidable = true;
     }
+    bool canWalk() {
+        return walkable;
+    }
     bool isDestroyed() {
         return health <= 0;
     }
@@ -51,14 +55,18 @@ public:
         if (itemName == "boulder") hasBoulder = true;
         buildingTextureName = itemName;
         occupied = true;
-        if (itemName != "plant")
+        if (itemName != "plant") {
             collidable = true;
+            walkable = false;
+        }
     }
     bool canBuild() {
         return !occupied;
     }
     void setTexture(string newTextureName) {
         textureName = newTextureName;
+        if (textureName == "water")
+            walkable = false;
     }
     void addTree(string treeType) {
         hasTree = true;

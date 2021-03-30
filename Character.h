@@ -51,7 +51,7 @@ public:
 		isCarrying = false;
 		return carrying;
 	}
-	void setOrderPosition(Vector2 pos);
+	void setOrderPosition(Vector2 pos, Grid* grid);
 	GroundItem getItem() { return carrying; }
 	bool getIsCarrying() { return isCarrying; }
 	void setLastHit(long int newLastHit) { lastHit = newLastHit; }
@@ -63,16 +63,16 @@ public:
 	Order getOrder() { return order; }
 	bool getIsAtOrderLocation() { return order.getPosition().x == position.x && order.getPosition().y == position.y; }
 	void completedOrder();
-	bool giveOrder(Order newOrder);
+	bool giveOrder(Order newOrder, Grid* grid);
 	Skill getSkillByIndex(int index);
 	bool getIsMale();
 	void rerollStats();
-	void setGoal(Vector2 newGoal);
+	void setGoal(Vector2 newGoal, Grid* grid);
 	Skill* getSkill(string skillName);
 	void improveSkill(string statName, int amount);
 	void setName(string newName);
 	Vector2 getGlobalPosition(float newSize);
-	void update(float &deltaTime);
+	void update(float &deltaTime, Grid* grid);
 	void draw(sf::RenderWindow& window);
 	Vector2* getPosition();
 	void setPosition(Vector2 newPosition);

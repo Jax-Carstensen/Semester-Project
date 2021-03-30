@@ -83,8 +83,6 @@ C:\Users\jaxca\Desktop\Semester Project\Game.h(266,140): warning C4244: 'argumen
 C:\Users\jaxca\Desktop\Semester Project\Game.h(266,118): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   The contents of <filesystem> are available only with C++17 or later.
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(61,17): warning C4244: 'initializing': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(107,104): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(107,59): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(108,94): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -115,6 +113,7 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(112,59): warning C4244: 'argume
           [
               T=float
           ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(117,15): warning C4244: 'argument': conversion from 'time_t' to 'unsigned int', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(163,26): warning C4305: 'argument': truncation from 'double' to 'float'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(366,60): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(366,39): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
@@ -309,9 +308,37 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(610,59): warning C4244: 'argume
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(645,63): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(645,42): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(649,45): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(839,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(840,16): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(839,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(840,16): warning C4244: 'initializing': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(847,148): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(847,142): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(847,149): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(849,160): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(849,154): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(849,161): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(851,138): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(851,132): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(851,139): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(856,138): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(856,132): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(856,139): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(859,118): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(859,112): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(859,119): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(862,60): warning C4244: 'argument': conversion from 'double' to 'sf::Uint8', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(865,150): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(865,144): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(868,123): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -322,8 +349,23 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(868,68): warning C4244: 'argume
           [
               T=float
           ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(875,180): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(875,174): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(875,181): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(879,93): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(879,111): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(879,105): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(879,112): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(881,99): warning C4244: 'argument': conversion from 'int' to 'float', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(881,117): error C2664: 'Vector2 Game::addVectors(Vector2,Vector2)': cannot convert argument 2 from 'Vector2Float' to 'Vector2'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(881,111): message : No user-defined-conversion operator available that can perform this conversion, or the operator cannot be called
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(57,15): message : see declaration of 'Game::addVectors'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(881,118): error C2660: 'Image::draw': function does not take 1 arguments
+C:\Users\jaxca\Desktop\Semester Project\Image.h(36,10): message : see declaration of 'Image::draw'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(886,74): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(886,54): warning C4244: 'argument': conversion from 'double' to 'float', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(888,26): warning C4244: 'initializing': conversion from 'double' to 'int', possible loss of data
@@ -389,16 +431,6 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1057,58): warning C4244: 'argum
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1058,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1058,56): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1093,85): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -451,16 +483,8 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1133,75): warning C4244: 'argum
           [
               T=float
           ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1145,108): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1145,73): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
-          with
-          [
-              T=float
-          ]
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1143,55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1144,55): warning C4244: '=': conversion from 'float' to 'int', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1154,52): warning C4244: 'argument': conversion from 'int' to 'T', possible loss of data
           with
           [
@@ -472,10 +496,58 @@ C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1154,46): warning C4244: 'argum
               T=float
           ]
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1158,30): warning C4244: 'initializing': conversion from 'double' to 'float', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1160,57): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1162,58): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1164,57): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1166,58): warning C4244: '+=': conversion from 'float' to 'int', possible loss of data
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,20): error C2672: 'std::min': no matching overloaded function found
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): error C2780: '_Ty std::min(std::initializer_list<_Elem>)': expects 1 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(76): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): error C2784: '_Ty std::min(std::initializer_list<_Elem>,_Pr)': could not deduce template argument for 'std::initializer_list<_Elem>' from 'float'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(73): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): error C2782: 'const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)': template parameter '_Ty' is ambiguous
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(65): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): message : could be 'int'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): message : or       'float'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): error C2784: 'const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)': could not deduce template argument for 'const _Ty &' from 'int'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(65): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1167,35): error C2780: 'const _Ty &std::min(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)': expects 3 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(56): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,20): error C2672: 'std::min': no matching overloaded function found
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): error C2780: '_Ty std::min(std::initializer_list<_Elem>)': expects 1 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(76): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): error C2784: '_Ty std::min(std::initializer_list<_Elem>,_Pr)': could not deduce template argument for 'std::initializer_list<_Elem>' from 'float'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(73): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): error C2782: 'const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)': template parameter '_Ty' is ambiguous
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(65): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): message : could be 'int'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): message : or       'float'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): error C2784: 'const _Ty &std::min(const _Ty &,const _Ty &) noexcept(<expr>)': could not deduce template argument for 'const _Ty &' from 'int'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(65): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1168,35): error C2780: 'const _Ty &std::min(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)': expects 3 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(56): message : see declaration of 'std::min'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,20): error C2672: 'std::max': no matching overloaded function found
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): error C2780: '_Ty std::max(std::initializer_list<_Elem>)': expects 1 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(52): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): error C2784: '_Ty std::max(std::initializer_list<_Elem>,_Pr)': could not deduce template argument for 'std::initializer_list<_Elem>' from 'float'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(49): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): error C2782: 'const _Ty &std::max(const _Ty &,const _Ty &) noexcept(<expr>)': template parameter '_Ty' is ambiguous
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(41): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): message : could be 'int'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): message : or       'float'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): error C2784: 'const _Ty &std::max(const _Ty &,const _Ty &) noexcept(<expr>)': could not deduce template argument for 'const _Ty &' from 'int'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(41): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1169,79): error C2780: 'const _Ty &std::max(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)': expects 3 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(32): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,20): error C2672: 'std::max': no matching overloaded function found
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): error C2780: '_Ty std::max(std::initializer_list<_Elem>)': expects 1 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(52): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): error C2784: '_Ty std::max(std::initializer_list<_Elem>,_Pr)': could not deduce template argument for 'std::initializer_list<_Elem>' from 'float'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(49): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): error C2782: 'const _Ty &std::max(const _Ty &,const _Ty &) noexcept(<expr>)': template parameter '_Ty' is ambiguous
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(41): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): message : could be 'int'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): message : or       'float'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): error C2784: 'const _Ty &std::max(const _Ty &,const _Ty &) noexcept(<expr>)': could not deduce template argument for 'const _Ty &' from 'int'
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(41): message : see declaration of 'std::max'
+C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1170,79): error C2780: 'const _Ty &std::max(const _Ty &,const _Ty &,_Pr) noexcept(<expr>)': expects 3 arguments - 2 provided
+C:\Program Files (x86)\Microsoft Visual Studio\2019\Community\VC\Tools\MSVC\14.28.29333\include\utility(32): message : see declaration of 'std::max'
 C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1177,30): warning C4244: 'initializing': conversion from '_Rep' to 'long', possible loss of data
           with
           [
@@ -565,7 +637,3 @@ C:\Users\jaxca\Desktop\Semester Project\Game.h(266,66): warning C4244: 'argument
 C:\Users\jaxca\Desktop\Semester Project\Game.h(266,140): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
 C:\Users\jaxca\Desktop\Semester Project\Game.h(266,118): warning C4244: 'argument': conversion from 'double' to 'int', possible loss of data
   Generating Code...
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(89): warning C4715: 'Game::getItemByName': not all control paths return a value
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(97): warning C4715: 'Game::getImageByName': not all control paths return a value
-C:\Users\jaxca\Desktop\Semester Project\Game.cpp(1247): warning C4715: 'Game::getGroundItem': not all control paths return a value
-  Semester Project.vcxproj -> C:\Users\jaxca\Desktop\Semester Project\Debug\Semester Project.exe

@@ -114,7 +114,7 @@ void Game::drawZone(sf::RenderWindow& window, Zone zone, sf::Color color) {
     window.draw(zoneText);
 }
 void Game::generateWorld() {
-    //srand(time(NULL));
+    srand(time(NULL));
     for (int x = 0; x < gridSize; x++) {
         for (int y = 0; y < gridSize; y++) {
             /*if (rnd(18))
@@ -674,7 +674,7 @@ void Game::giveOrders() {
         //Iterate over all of the orders starting at 0
         for (int j = 0; j < currentOrderIndex; j++) {
             //If that order can be given to the settler
-            if (settlers[i].giveOrder(orders[j])) {
+            if (settlers[i].giveOrder(orders[j], &world)) {
                 //Start at the order after the current one. Move every order that follows one place to the left
                 for (int k = j + 1; k < currentOrderIndex; k++) {
                     orders[k - 1] = orders[k];
@@ -1170,7 +1170,7 @@ void Game::update(sf::RenderWindow& window) {
         offset.y = max(offset.y, -1 * blockSize * (gridSize - blocksPerScreen));
     }
     for (int i = 0; i < currentSettlerCount; i++) {
-        settlers[i].update(deltaTime);
+        settlers[i].update(deltaTime, &world);
         if (settlers[i].getHasOrder() &&  settlers[i].getIsAtOrderLocation()) {
             if (settlers[i].getOrder().getOrderType() == "deconstruct") {
                 Vector2 position = settlers[i].getOrder().getPosition();
@@ -1200,14 +1200,14 @@ void Game::update(sf::RenderWindow& window) {
                         settlers[i].completedOrder();
                     }
                     else {
-                        settlers[i].setOrderPosition(toGo);
+                        settlers[i].setOrderPosition(toGo, &world);
                     }
                 }
                 else {
                     groundItemsToRemove[groundItemsToRemoveCount++] = settlers[i].getOrder().getPosition();
                     settlers[i].carry(getGroundItem(settlers[i].getOrder().getPosition()));
                     settlers[i].completedOrder();
-                    settlers[i].giveOrder(Order("haul", getFreeDumpZonePosition(settlers[i].getItem()), "Fitness", 0));
+                    settlers[i].giveOrder(Order("haul", getFreeDumpZonePosition(settlers[i].getItem()), "Fitness", 0), &world);
                 }
             }
         }
