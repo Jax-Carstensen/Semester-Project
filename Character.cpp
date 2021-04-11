@@ -84,6 +84,16 @@ bool Character::giveOrder(Order newOrder, Grid* grid) {
 }
 
 void Character::update(float &deltaTime, Grid* grid) {
+	hunger -= hungerFillAmount * deltaTime;
+	if (hunger <= 0) {
+		hunger = 0;
+		health -= hungerFillAmount * deltaTime;
+	}
+	if (health <= 0) {
+		health = 0;
+		dead = true;
+		return;
+	}
 	if (!characterAi.hasBeenSetup)
 		characterAi.setup(position);
 	
@@ -114,7 +124,12 @@ void Character::update(float &deltaTime, Grid* grid) {
 }
 
 Vector2 Character::getGlobalPosition(float newSize) {
-	return Vector2(position.x * newSize, position.y * newSize);
+	Vector2Float toReturn = Vector2Float(position.x, position.y);
+	if (dead && position.x <= 0)
+		toReturn.x++;
+	if (dead && position.y <= 0)
+		toReturn.y++;
+	return Vector2(toReturn.x * newSize, toReturn.y * newSize);
 }
    
 void Character::draw(sf::RenderWindow& window) {
@@ -124,8 +139,11 @@ Skill Character::getSkillByIndex(int index) {
 	return skills[index];
 }
 
-Vector2* Character::getPosition() {
-	return new Vector2(position.x, position.y);
+Vector2 Character::getPosition() {
+	return Vector2(position.x, position.y);
+}
+Vector2Float Character::getFloatPosition() {
+	return position;
 }
 
 bool rnd(int chance) {

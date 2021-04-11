@@ -12,10 +12,15 @@ public:
     string name;
     string image_name;
     sf::Sprite sprite;
+    sf::Sprite spriteTop;
+    sf::Sprite rotated;
     Image() { name = ""; image_name = ""; }
     ~Image() {}
     void load(sf::Texture& texture) {
         sprite.setTexture(texture);
+        rotated.setTexture(texture);
+        rotated.rotate(90);
+        spriteTop = sf::Sprite(texture, sf::IntRect(0, 0, 32, 20));
     }
     Image(string new_name, sf::Texture& base) {
         name = new_name;
@@ -31,11 +36,22 @@ public:
     }
     void rescale(float newSize) {
         newSize = newSize / 32.0;
-        sprite.setScale(sf::Vector2f(newSize, newSize));
+        sf::Vector2f size = sf::Vector2f(newSize, newSize);
+        sprite.setScale(size);
+        spriteTop.setScale(size);
+        rotated.setScale(size);
     }
     void draw(sf::RenderWindow& window, Vector2 position) {
         setPosition(position);
         window.draw(sprite);
+    }
+    void drawTop(sf::RenderWindow& window, Vector2 position) {
+        spriteTop.setPosition(sf::Vector2f(position.x, position.y));
+        window.draw(spriteTop);
+    }
+    void drawRotated(sf::RenderWindow& window, Vector2 position) {
+        rotated.setPosition(sf::Vector2f(position.x, position.y));
+        window.draw(rotated);
     }
 };
 #endif

@@ -242,6 +242,14 @@ public:
 
 
 
+    //Selected Settler UI
+    sf::Text settlerUIText;
+    sf::RectangleShape settlerUIBarRect;
+    sf::RectangleShape settlerUIValueRect;
+    sf::RectangleShape settlerUIBackground;
+
+
+
     string order = "";
     Order orderQueue[1000];
     bool choosingSettlers = true;
@@ -300,6 +308,10 @@ public:
     void addToStockpile(GroundItem item);
     void addStockpileItem(string itemName);
     bool groundItemExists(Vector2 itemPosition);
+    float distanceBetweenTiles(Vector2Float pos1, Vector2Float pos2);
+    bool collides(float x, float y, float r, float b, float x2, float y2, float r2, float b2);
+    bool boxCollides(Vector2 pos, Vector2 size, Vector2 pos2, Vector2 size2);
+    bool boxCollidesStandard(Vector2 pos, Vector2 pos2);
 
     Vector2 GetDesktopResolution();
     //Returns a Vector2 containing the width and height of the user's monitor in pixels

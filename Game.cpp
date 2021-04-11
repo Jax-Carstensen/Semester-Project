@@ -160,7 +160,7 @@ void Game::generateWorld() {
                             world.getSpace(x, y).addBoulder("iron-boulder");
                     }
                 //0.0001% chance to generate a pond
-                }else if (rnd(0.00001)) {
+                }else if (x > 16 && y > 16 && rnd(0.00001)) {
                     world.getSpace(x, y).deconstruct();
                     world.getSpace(x, y).setTexture("water");
                     int size = ((int)(rndNum(13) / 2) + 2);
@@ -404,6 +404,20 @@ void Game::uiSetup() {
     fpsAverage.setOutlineThickness(2);
     fpsAverage.setOutlineColor(sf::Color::Black);
     fpsAverage.setPosition(sf::Vector2f(0, 35));
+
+    settlerUIBackground.setPosition(sf::Vector2f(screenSize.x * 0.75, 0));
+    settlerUIBackground.setSize(sf::Vector2f(screenSize.x * 0.25, screenSize.y * 0.75));
+    settlerUIBackground.setFillColor(sf::Color(0, 0, 0, 255 * 0.5));
+    settlerUIText.setFont(font);
+    settlerUIText.setCharacterSize(30);
+    settlerUIText.setFillColor(sf::Color::White);
+    settlerUIText.setStyle(sf::Text::Bold);
+    settlerUIText.setOutlineThickness(2);
+    settlerUIText.setOutlineColor(sf::Color::Black);
+    settlerUIBarRect.setSize(sf::Vector2f(screenSize.x * 0.2, screenSize.y * 0.05));
+    settlerUIBarRect.setFillColor(sf::Color::Black);
+    settlerUIBarRect.setOutlineThickness(2);
+    settlerUIBarRect.setOutlineColor(sf::Color::White);
 
     placeholderText.setFont(font);
     placeholderText.setCharacterSize(24);
@@ -848,7 +862,7 @@ void Game::draw(sf::RenderWindow& window) {
             if (world.getSpace(x, y).getIsFull()) {
                 getImageByName(world.getSpace(x, y).getBuildingTextureName()).draw(window, addVectors(world.getSpace(x, y).getGlobalPosition(blockSize), offset));
                 if (world.getSpace(x, y).getBuildingTextureName() == "pine-tree-bottom")
-                    getImageByName("pine-tree-top").draw(window, addVectors(world.getSpace(x, y - 1).getGlobalPosition(blockSize), offset));
+                    getImageByName("pine-tree-top").draw(window, Vector2(x * blockSize + offset.x, (y - 1) * blockSize + offset.y));
             }
             if (y + 1 < gridSize)
                 if ((x * blockSize + offset.x > screenSize.x || (y + 1) * blockSize + offset.y > screenSize.y) || (x * blockSize + offset.x < -blockSize || (y + 1) * blockSize + offset.y < -blockSize))
@@ -875,13 +889,61 @@ void Game::draw(sf::RenderWindow& window) {
                     getImageByName("pine-tree-top").draw(window, addVectors(Vector2(groundItems[j].getPosition().x * blockSize, groundItems[j].getPosition().y * blockSize), offset));
     }
     for (int i = 0; i < currentSettlerCount; i++) {
-        if (settlers[i].getIsMale())
-            getImageByName("settler").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
-        else
-            getImageByName("settlerFemale").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+        if (settlers[i].dead) {
+            if (settlers[i].getIsMale()) {
+                getImageByName("settler").drawRotated(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+            }
+            else {
+                getImageByName("settlerFemale").drawRotated(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+            }
+            continue;
+        }
+        bool isUnderWater = false;
+        //float x = settlers[i].getFloatPosition().x;
+        //float y = settlers[i].getFloatPosition().y;
+        float localX = settlers[i].getPosition().x;
+        float localY = settlers[i].getPosition().y;
+        float x = settlers[i].getGlobalPosition(blockSize).x;
+        float y = settlers[i].getGlobalPosition(blockSize).y;
+        if (localX > 0 && localY > 0)
+            if (world.getSpace(localX + 0.75, localY + 0.5).getTextureName() == "water")
+                isUnderWater = true;
+        Vector2 positions[5] = {
+            Vector2(x - blockSize, y),
+            Vector2(x + blockSize, y),
+            Vector2(x, blockSize + y),
+            Vector2(x, blockSize - y),
+            Vector2(x, y)
+        };
+        for (int k = 0; k < 5; k++)
+            if (boxCollidesStandard(positions[k], Vector2(x, y)))
+                if(world.getSpace(positions[k].x / blockSize, positions[k].y / blockSize).getTextureName() == "water")
+                    isUnderWater = true;
+
+        for (int j = 0; j < 5; j++) {
+            if (boxCollidesStandard(positions[j], Vector2(x, y)))
+                if (world.getSpace(positions[j].x / blockSize, positions[j].y / blockSize).getTextureName() == "sand")
+                    isUnderWater = false;
+        }
+        if (settlers[i].getIsMale()) {
+            if (!isUnderWater)
+                getImageByName("settler").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+            else
+                getImageByName("settler").drawTop(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+        }
+        else {
+            if (!isUnderWater)
+                getImageByName("settlerFemale").draw(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+            else
+                getImageByName("settlerFemale").drawTop(window, addVectors(settlers[i].getGlobalPosition(blockSize), offset));
+        }
+        /*if (positionWithinBounds(y + 1) && world.getSpace(x, y + 1).getIsFull() && world.getSpace(x, y + 1).getBuildingTextureName() == "pine-tree-bottom") {
+            //getImageByName("pine-tree-top").draw(window, addVectors(Vector2(x * blockSize, y * blockSize), offset));
+            //getImageByName("pine-tree-bottom").draw(window, Vector2(x * blockSize, y + blockSize));
+        }*/
     }
     if (!escaped) {
-        if (inventoryOpen) {
+        if (inventoryOpen && !selectedSettler) {
             placeholderText.setString("Your Items");
             placeholderText.setPosition(screenSize.x * 0.8, screenSize.y * 0.12);
             window.draw(placeholderText);
@@ -890,7 +952,7 @@ void Game::draw(sf::RenderWindow& window) {
             bg.setFillColor(sf::Color(0, 0, 0, 255 * 0.5));
             bg.setSize(sf::Vector2f(screenSize.x * 0.2, screenSize.y * 0.04));
             for (int i = 0; i < currentStockpileIndex; i++) {
-                if (stockpile[i].value >= 0) {
+                if (stockpile[i].value > 0) {
                     bg.setPosition(sf::Vector2f(screenSize.x * 0.78, currentY - screenSize.y * 0.01));
                     window.draw(bg);
                     placeholderText.setString(to_string(stockpile[i].value) + "x");
@@ -954,14 +1016,80 @@ void Game::draw(sf::RenderWindow& window) {
             buildButtons[j].draw(window);
         }
     }
-    if (selectedSettler)
-        window.draw(settlerTitleText);
+    if (selectedSettler) {
+        Character survivor = settlers[selectedSettlerIndex];
+        window.draw(settlerUIBackground);
+
+        //Drawing survivor name
+        settlerUIText.setString(survivor.getName());
+        settlerUIText.setPosition(sf::Vector2f(screenSize.x * 0.875 - settlerUIText.getGlobalBounds().width * 0.5, screenSize.y * 0.01));
+        window.draw(settlerUIText);
+
+        //Drawing survivor image
+        string name = "settlerFemale";
+        if (survivor.getIsMale())
+            name = "settler";
+        getImageByName(name).draw(window, Vector2((screenSize.x * 0.25 - blockSize) * 0.5 + screenSize.x * 0.75, screenSize.y * 0.05));
+
+        //Drawing healthbar
+        Vector2 barPosition = Vector2(screenSize.x * 0.775, screenSize.y * 0.15);
+        settlerUIBarRect.setPosition(sf::Vector2f(barPosition.x, barPosition.y));
+        settlerUIValueRect.setFillColor(sf::Color::Red);
+        settlerUIValueRect.setPosition(sf::Vector2f(barPosition.x, barPosition.y));
+        settlerUIValueRect.setSize(sf::Vector2f(screenSize.x * 0.2 * (survivor.getHealth() / survivor.getMaxHealth()), screenSize.y * 0.05));
+        settlerUIText.setString("Health:");
+        settlerUIText.setPosition(sf::Vector2f(barPosition.x + screenSize.x * 0.005, (barPosition.y + screenSize.y * 0.025) - settlerUIText.getLocalBounds().height * 0.5));
+        window.draw(settlerUIBarRect);
+        window.draw(settlerUIValueRect);
+        window.draw(settlerUIText);
+
+        //Drawing infection bar
+        barPosition = Vector2(screenSize.x * 0.775, screenSize.y * 0.21);
+        settlerUIBarRect.setPosition(sf::Vector2f(barPosition.x, barPosition.y));
+        settlerUIValueRect.setFillColor(sf::Color::Green);
+        settlerUIValueRect.setPosition(sf::Vector2f(barPosition.x, barPosition.y));
+        settlerUIValueRect.setSize(sf::Vector2f(screenSize.x * 0.2 * (survivor.getInfection() / survivor.getMaxInfection()), screenSize.y * 0.05));
+        settlerUIText.setString("Infection:");
+        settlerUIText.setPosition(sf::Vector2f(barPosition.x + screenSize.x * 0.005, (barPosition.y + screenSize.y * 0.025) - settlerUIText.getLocalBounds().height * 0.5));
+        window.draw(settlerUIBarRect);
+        window.draw(settlerUIValueRect);
+        window.draw(settlerUIText);
+
+        //Drawing hunger bar
+        barPosition = Vector2(screenSize.x * 0.775, screenSize.y * 0.27);
+        settlerUIBarRect.setPosition(sf::Vector2f(barPosition.x, barPosition.y));
+        settlerUIValueRect.setFillColor(sf::Color::Yellow);
+        settlerUIValueRect.setPosition(sf::Vector2f(barPosition.x, barPosition.y));
+        settlerUIValueRect.setSize(sf::Vector2f(screenSize.x * 0.2 * (survivor.getHunger() / survivor.getMaxHunger()), screenSize.y * 0.05));
+        settlerUIText.setString("Hunger:");
+        settlerUIText.setPosition(sf::Vector2f(barPosition.x + screenSize.x * 0.005, (barPosition.y + screenSize.y * 0.025) - settlerUIText.getLocalBounds().height * 0.5));
+        window.draw(settlerUIBarRect);
+        window.draw(settlerUIValueRect);
+        window.draw(settlerUIText);
+
+        //Character survivor = settlers[selectedSettlerIndex];
+    }
     if (mouseDown && order != "") {
         //clickedRect.setPosition(clickedRect.getPosition().x + offset.x, clickedRect.getPosition().y + offset.y);
         window.draw(clickedRect);
     }
     window.draw(fpsCounter);
     window.draw(fpsAverage);
+}
+bool Game::collides(float x, float y, float r, float b, float x2, float y2, float r2, float b2) {
+    return !(r <= x2 || x > r2 || b <= y2 || y > b2);
+}
+bool Game::boxCollides(Vector2 pos, Vector2 size, Vector2 pos2, Vector2 size2) {
+    return collides(pos.x, pos.y,
+        pos.x + size.x, pos.y + size.y,
+        pos2.x, pos2.y,
+        pos2.x + size2.x, pos2.y + size2.y);
+}
+bool Game::boxCollidesStandard(Vector2 pos, Vector2 pos2) {
+    return boxCollides(pos, Vector2(blockSize, blockSize), pos2, Vector2(blockSize, blockSize));
+}
+float Game::distanceBetweenTiles(Vector2Float pos1, Vector2Float pos2) {
+    return sqrt(pow(pos2.x - pos1.x, 2) + pow(pos2.y - pos1.y, 2));
 }
 bool Game::groundItemAtPosition(Vector2 position) {
     for (int i = 0; i < maxGroundItems; i++) {
@@ -1010,6 +1138,12 @@ void Game::update(sf::RenderWindow& window) {
         addFpsSample(fps);
     fpsCounter.setString("FPS: " + to_string((int)fps));
     fpsAverage.setString("AVG: " + to_string(currentAverageFps));
+    for (int i = 0; i < currentSettlerCount; i++) {
+        if (settlers[i].dead && !settlers[i].managedDeath) {
+            cout << "Settler index #" << i << " is now dead!" << endl;
+            settlers[i].manageDeath();
+        }
+    }
     giveOrders();
     mouseClicked = false;
     sf::Event event;
@@ -1157,19 +1291,21 @@ void Game::update(sf::RenderWindow& window) {
     if (order == "") {
         float movementAmount = screenSize.x * 0.15 * deltaTime * 1.5;
         if (keys.w)
-            offset.y += movementAmount * deltaTime * 300;
+            offset.y += round(movementAmount * deltaTime * 300);
         if (keys.s)
-            offset.y += -movementAmount * deltaTime * 300;
+            offset.y += round(-movementAmount * deltaTime * 300);
         if (keys.a)
-            offset.x += movementAmount * deltaTime * 300;
+            offset.x += round(movementAmount * deltaTime * 300);
         if (keys.d)
-            offset.x += -movementAmount * deltaTime * 300;
+            offset.x += round(-movementAmount * deltaTime * 300);
         offset.x = min(offset.x, 0);
         offset.y = min(offset.y, 0);
         offset.x = max(offset.x, -1 * blockSize * (gridSize - blocksPerScreen));
         offset.y = max(offset.y, -1 * blockSize * (gridSize - blocksPerScreen));
     }
     for (int i = 0; i < currentSettlerCount; i++) {
+        if (settlers[i].dead)
+            continue;
         settlers[i].update(deltaTime, &world);
         if (settlers[i].getHasOrder() &&  settlers[i].getIsAtOrderLocation()) {
             if (settlers[i].getOrder().getOrderType() == "deconstruct") {
@@ -1194,7 +1330,7 @@ void Game::update(sf::RenderWindow& window) {
                     Vector2 pos = settlers[i].getOrder().getPosition();
                     if (pos.x == toGo.x && pos.y == toGo.y) {
                         GroundItem newItem = settlers[i].drop();
-                        newItem.setPosition(*settlers[i].getPosition());
+                        newItem.setPosition(settlers[i].getPosition());
                         addGroundItem(newItem);
                         addToStockpile(newItem);
                         settlers[i].completedOrder();

@@ -57,7 +57,7 @@ public:
         occupied = true;
         if (itemName != "plant") {
             collidable = true;
-            walkable = false;
+            //walkable = false;
         }
     }
     bool canBuild() {
@@ -111,10 +111,11 @@ public:
 class Grid {
 public:
     GridItem** spaces;
+    const int size = 256;
     Grid() {
-        spaces = new GridItem * [256];
-        for (int i = 0; i < 256; i++) {
-            spaces[i] = new GridItem[256];
+        spaces = new GridItem * [size];
+        for (int i = 0; i < size; i++) {
+            spaces[i] = new GridItem[size];
         }
     }
     Grid(int gridSize) {
@@ -129,6 +130,9 @@ public:
     }
     void setSpace(int x, int y, GridItem* gridItem) {
         spaces[x][y] = *gridItem;
+    }
+    int getSize() {
+        return size;
     }
 };
 #endif

@@ -27,7 +27,16 @@ private:
 	int millisecondsBetweenHits = 750;
 	GroundItem carrying;
 	bool isCarrying = false;
+	float health = 100;
+	float maxHealth = 100;
+	float infection = 0;
+	float maxInfection = 100;
+	float hunger = 100;
+	float maxHunger = 100;
+	const float hungerFillAmount = 0.1;
 public:
+	bool dead = false;
+	bool managedDeath = false;
 	Character() {
 		skills[0] =  Skill("Shooting",					1);//Ability to shoot ranged weapons
 		skills[1] =  Skill("Melee",						1);//Ability to use melee weapons
@@ -74,8 +83,17 @@ public:
 	Vector2 getGlobalPosition(float newSize);
 	void update(float &deltaTime, Grid* grid);
 	void draw(sf::RenderWindow& window);
-	Vector2* getPosition();
+	Vector2 getPosition();
 	void setPosition(Vector2 newPosition);
 	string getName();
+	Vector2Float getFloatPosition();
+	float getHealth() { return health; }
+	float getMaxHealth() { return maxHealth; }
+	float getInfection() { return infection; }
+	float getMaxInfection() { return maxInfection; }
+	float getHunger() { return hunger; }
+	float getMaxHunger() { return maxHunger; }
+	void manageDeath() { managedDeath = true; }
+	void eat(float amount) { hunger = max(maxHunger, hunger + amount); }
 };
 #endif
