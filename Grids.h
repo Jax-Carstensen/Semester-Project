@@ -8,7 +8,7 @@ using namespace std;
 class GridItem {
 private:
     bool collidable = false;
-    string textureName = "";
+    string textureName = "grass";
     string buildingTextureName;
     Vector2 position = Vector2();
     int maxHealth = 0;

@@ -111,8 +111,8 @@ void Character::update(float &deltaTime, Grid* grid) {
 			Vector2 newGoal = Vector2(newGoalAddon.x + position.x, newGoalAddon.y + position.y);
 			newGoal.x = max(newGoal.x, 0);
 			newGoal.y = max(newGoal.y, 0);
-			newGoal.x = min(newGoal.x, 256);
-			newGoal.y = min(newGoal.y, 256);
+			newGoal.x = min(newGoal.x, 255);
+			newGoal.y = min(newGoal.y, 255);
 			characterAi.setGoal(newGoal, grid);
 		}
 	}

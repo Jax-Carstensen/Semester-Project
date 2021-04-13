@@ -41,7 +41,7 @@ private:
     const int pauseMenuButtonsCount = 4;
 
     const int maxSettlers = 50;
-    const int maxAnimals = 100;
+    const int maxAnimals = 250;
     const int maxZombies = 100;
     const int maxTextures = 150;
     const static int maxItems = 150;
@@ -181,7 +181,7 @@ public:
     string splashText[3] = {
         "Game not running well? Change some of the options in settings.",
         "Keep your settlers alive! When they die, it's game over.",
-        ""
+        "Left click on a settler to view their stats"
     };
     string currentTooltip;
     /*
@@ -250,6 +250,16 @@ public:
 
 
 
+    const static int animalTypes = 2;
+    const int startingAnimals = maxAnimals * 0.5;
+    int currentAnimalIndex = 0;
+    Animal animalStats[animalTypes] = {
+        Animal("boar"),
+        Animal("snake")
+    };
+
+
+
     string order = "";
     Order orderQueue[1000];
     bool choosingSettlers = true;
@@ -312,6 +322,14 @@ public:
     bool collides(float x, float y, float r, float b, float x2, float y2, float r2, float b2);
     bool boxCollides(Vector2 pos, Vector2 size, Vector2 pos2, Vector2 size2);
     bool boxCollidesStandard(Vector2 pos, Vector2 pos2);
+    void drawPineTree(sf::RenderWindow& window, Vector2 position);
+    void spawnZombies();
+    void spawnAnimals();
+    void spawnAnimal(Vector2 position, Animal animalType);
+    void drawAnimals(sf::RenderWindow& window);
+    void updateAnimals();
+    bool inWater(Vector2 position, Vector2 globalPosition);
+    void redrawStructures(Vector2 position);
 
     Vector2 GetDesktopResolution();
     //Returns a Vector2 containing the width and height of the user's monitor in pixels
