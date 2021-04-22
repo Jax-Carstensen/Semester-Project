@@ -11,7 +11,9 @@ private:
 	string orderType;
 	string skillName;
 	int skillRequirementLevel = 1;
-	Vector2 position;    
+	Vector2 position;
+	int value = -1;
+	string value2 = "";
 public:
 	Order() {}
 	Order(string newOrderType, Vector2 newPosition, string newSkillName, int newSkillRequirementLevel) {
@@ -19,6 +21,14 @@ public:
 		position = newPosition;
 		skillName = newSkillName;
 		skillRequirementLevel = newSkillRequirementLevel;
+	}
+	Order(string newOrderType, Vector2 newPosition, string newSkillName, int newSkillRequirementLevel, int newValue, string newValue2) {
+		orderType = newOrderType;
+		position = newPosition;
+		skillName = newSkillName;
+		skillRequirementLevel = newSkillRequirementLevel;
+		value = newValue;
+		value2 = newValue2;
 	}
 	~Order() {}
 	string getSkillName() {

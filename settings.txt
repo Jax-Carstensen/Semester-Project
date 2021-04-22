@@ -1,2 +1,2 @@
 refresh-rate-index:6
-volume-index:1
+volume-index:0

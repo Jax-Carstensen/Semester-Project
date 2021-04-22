@@ -18,60 +18,44 @@ private:
 	bool dead;
 	Vector2 goal;
 public:
-	Animal() {}
-	Animal(string newName) {
-		name = newName;
-	}
-	~Animal() {}
-	void initialize(Animal otherAnimal, Vector2 newPosition) {
-		name = otherAnimal.name;
-		position = Vector2Float(newPosition.x, newPosition.y);
-		active = true;
-	}
-	string getName() {
-		return name;
-	}
-	Vector2 getPosition() {
-		return Vector2(position.x, position.y);
-	}
-	bool isActive() {
-		return active;
-	}
-	void setActive(bool newActive) {
-		active = newActive;
-	}
-	Vector2 getGlobalPosition(float blockSize) {
-		return Vector2(position.x * blockSize, position.y * blockSize);
-	}
-	void update(float& deltaTime, Grid* grid) {
-		if (health <= 0) {
-			health = 0;
-			dead = true;
-			return;
-		}
-		if (!ai.hasBeenSetup)
-			ai.setup(position);
+	Animal();
+	Animal(string newName);
+	~Animal();
 
-		if (!ai.getIsPathfinding()) {
-			Vector2 newGoalAddon = Vector2(rand() % 12, rand() % 12);
-			if (rand() % 2 == 0)
-				newGoalAddon.x *= -1;
-			if (rand() % 2 == 0)
-				newGoalAddon.y *= -1;
+	//Pre:  None
+	//Post: Returns the current position of the animal in float form
+	Vector2Float getFloatPosition();
 
-			Vector2 newGoal = Vector2(newGoalAddon.x + position.x, newGoalAddon.y + position.y);
-			newGoal.x = max(newGoal.x, 0);
-			newGoal.y = max(newGoal.y, 0);
-			newGoal.x = min(newGoal.x, 255);
-			newGoal.y = min(newGoal.y, 255);
-			ai.setGoal(newGoal, grid);
-			goal = newGoal;
-		}
-		ai.update(deltaTime);
-		position = ai.getPosition();
-	}
-	Vector2 getGoal() {
-		return goal;
-	}
+	//Pre:  The animal to copy stats from, and the position to start at
+	//Post: Initializes this animal's stats based on the provided one, and moves to the provided position
+	void initialize(Animal otherAnimal, Vector2 newPosition);
+
+	//Pre:  None
+	//Post: Returns the name of the animal
+	string getName();
+
+	//Pre:  None
+	//Post: Returns the current position of the animal
+	Vector2 getPosition();
+
+	//Pre:  None
+	//Post: Returns true if the animal is alive, and false if it is not
+	bool isActive();
+
+	//Pre:  A boolean representing whether or not the animal should be alive
+	//Post: Kills the animal if the provided boolean is false, and resurrects it if it is true
+	void setActive(bool newActive);
+
+	//Pre:  A float representing the size of tiles (in pixels)
+	//Post: Returns the position of the animal relative to the size of tiles in the game
+	Vector2 getGlobalPosition(float blockSize);
+
+	//Pre:  A float representing deltaTime
+	//Post: Moves the animal based upon the provided deltaTime
+	void update(float& deltaTime);
+
+	//Pre:  None
+	//Post: Returns the current goal position of the animal
+	Vector2 getGoal();
 };
 #endif

@@ -47,11 +47,16 @@ private:
     const static int maxItems = 150;
     const static int maxStockpileItems = maxItems;
     const static int maxGroundItems = 250;
-    const static int orderIconsCount = 4;
+    const static int orderIconsCount = 5;
     const static int maxSoundBuffers = 30;
     const static int craftableItemsCount = 100;
     const string settingsSaveLocation = "./settings.txt";
 public:
+
+
+    bool inDevelopment = false;
+
+
     int currentGroundItemIndex = 0;
     int currentTextureIndex = 0;
     int currentItemIndex = 0;
@@ -89,6 +94,8 @@ public:
     sf::RectangleShape clickedRect;
     bool selectedSettler = false;
     int selectedSettlerIndex;
+    bool selectedAnimal = false;
+    int selectedAnimalIndex;
     bool escaped = false;
     bool generatedWorld = false;
     bool craftingOpen = false;
@@ -114,13 +121,16 @@ public:
     sf::RectangleShape zoneBase;
     sf::Text zoneText;
 
-    Button* buildButtons = new Button[12];
+    const static int buildButtonsCount = 1;
+
+    Button* buildButtons = new Button[buildButtonsCount];
     Button* pauseMenuButtons = new Button[pauseMenuButtonsCount];
     StockpileItem stockpile[maxStockpileItems];
-    string buildButtonNames[12] = {
+    //Other buttons just really had no purpose
+    string buildButtonNames[buildButtonsCount] = {
         "Orders",
-        "Craft",  
-        "Structure",
+        //"Structure"
+        /*
         "Production",
         "Furniture",
         "Power",
@@ -130,48 +140,54 @@ public:
         "Recreation",
         "Ship",
         "Temperature"
+        "Craft",  */
     };
-    int textureLength = 33;
+    int textureLength = 37;
     string* textureNames = new string[textureLength]{
         "grass",
-        "dirt",
+        "tree-bottom",
+        "pine-tree-top",
+        "pine-tree-bottom",
+        "x",
+        "bush",
+        "orange-flower",
+        "venus-flytrap",
+        "water",
+        "sand",
+        "log",
         "boulder",
         "boulder-2",
         "boulder-3",
-        "x",
-        "wooden-wall-view-front",
-        "stone",
-        "bush",
-        "tree-bottom",
         "settler",
         "settlerFemale",
+        "wooden-wall-view-front",
+        "stone",
+        "chicken",
+        "deer",
         "iron-boulder",
         "chop-icon",
         "cut-icon",
         "mine-icon",
-        "pine-tree-bottom",
-        "pine-tree-top",
-        "water",
-        "sand",
-        "log",
         "cancel-icon",
         "stone-shard",
+        "attack-icon",
         "iron-shard",
         "chest",
         "boar",
-        "snake",
+        "gorilla",
         "moon-grass",
         "moon-tree",
         "moon-zombie",
         "morto-the-moon-god",
-        "orange-flower",
-        "venus-flytrap",
+        "zombie",
+        "zombie-brute"
     };
     string orderIcons[orderIconsCount] = {
         "cancel",
         "chop",
         "cut",
-        "mine"
+        "mine",
+        "attack"
     };
     Vector2 orderIconPositions[orderIconsCount];
     string settingsNames[2] = {
@@ -250,16 +266,27 @@ public:
 
 
 
-    const static int animalTypes = 2;
+    const static int animalTypes = 4;
     const int startingAnimals = maxAnimals * 0.5;
     int currentAnimalIndex = 0;
     Animal animalStats[animalTypes] = {
         Animal("boar"),
-        Animal("snake")
+        Animal("gorilla"),
+        Animal("chicken"),
+        Animal("deer")
+    };
+
+    const static int zombieTypes = 2;
+    const int startingZombies = maxZombies * 0.5;
+    int currentZombieIndex = 0;
+    Zombie zombieStats[zombieTypes] = {
+        //Health, Damage, Texture Name
+        Zombie(50, 10, "zombie"),
+        Zombie(120, 8, "zombie-brute")
     };
 
 
-
+    sf::RectangleShape coverSettlerNames;
     string order = "";
     Order orderQueue[1000];
     bool choosingSettlers = true;
@@ -269,6 +296,7 @@ public:
     bool ordersOpen = false;
     bool settingsOpen = false;
     bool changeFramerateLimit = false;
+    bool windowOpen = true;
     sf::Text settler1Name, settler2Name, settler3Name, settlerTitleText, largeSettlerTitleText;
     int settlerDisplayIndex = -1;
     sf::RectangleShape* settler1Box;
@@ -280,6 +308,8 @@ public:
     sf::RectangleShape iconBackground;
     sf::Text loadingText;
     sf::Text itemCount;
+    //sf::RenderWindow win(sf::VideoMode(1920, 1080), "RPG");
+    sf::RenderWindow* window;
     Button rerollStatsButton = Button("Reroll Stats", Vector2(screenSize.x * 0.8, screenSize.y * 0.05), Vector2(screenSize.x * 0.15, screenSize.y * 0.075), font, "reroll", sf::Color(30, 30, 30));
     Button startGame = Button("Start Game", Vector2(screenSize.x * 0.0125, screenSize.y * 0.9), Vector2(screenSize.x * 0.125, screenSize.y * 0.075), font, "reroll", sf::Color(0, 255, 0));
 
@@ -325,11 +355,18 @@ public:
     void drawPineTree(sf::RenderWindow& window, Vector2 position);
     void spawnZombies();
     void spawnAnimals();
+    void spawnZombie(Vector2 position, Zombie zombieType);
     void spawnAnimal(Vector2 position, Animal animalType);
+    void drawZombies(sf::RenderWindow& window);
     void drawAnimals(sf::RenderWindow& window);
+    void updateZombies();
     void updateAnimals();
     bool inWater(Vector2 position, Vector2 globalPosition);
-    void redrawStructures(Vector2 position);
+    void redrawStructures(Vector2Float position);
+    bool onScreen(Vector2 position);
+    void windowManagement(sf::RenderWindow& window);
+    void queueAttack(Vector2 position, int index, string type);
+    void recursivelyDrawPineTreeTops(Vector2 position);
 
     Vector2 GetDesktopResolution();
     //Returns a Vector2 containing the width and height of the user's monitor in pixels
@@ -373,7 +410,7 @@ public:
     void draw(sf::RenderWindow& window);
     //Takes a RenderWindow and draws all objects to the screen
 
-    void update(sf::RenderWindow& window);
+    void update();
     //Takes a RenderWindow and handles all of the physics, movement, and calculations
 
 };

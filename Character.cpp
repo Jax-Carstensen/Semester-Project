@@ -11,15 +11,26 @@
 
 using namespace std;
 
-void Character::setGoal(Vector2 newGoal, Grid* grid) { 
-	characterAi.setGoal(newGoal, grid); 
+
+const int maleNamesCount = 2942;
+const int femaleNamesCount = 5000;
+
+void Character::setGoal(Vector2 newGoal) { 
+	characterAi.setGoal(newGoal); 
 }
 void Character::setName(string newName) { name = newName; }
 string Character::getName() { return name; }
 bool Character::getIsMale() { return isMale; }
 
-const int maleNamesCount = 2942;
-const int femaleNamesCount = 5000;
+void Character::carry(GroundItem toCarry) {
+	carrying = toCarry;
+	isCarrying = true;
+}
+
+GroundItem Character::drop() {
+	isCarrying = false;
+	return carrying;
+}
 
 void Character::rerollStats() {
 	isMale = rand() % 2;
@@ -51,9 +62,9 @@ void Character::calculateSpeed() {
 	millisecondsBetweenHits = 750 - (getSkill("Fitness")->getSkillValue() * 25);
 }
 
-void Character::setOrderPosition(Vector2 pos, Grid* grid) {
+void Character::setOrderPosition(Vector2 pos) {
 	order.setPosition(pos);
-	setGoal(pos, grid);
+	setGoal(pos);
 }
 
 void Character::setPosition(Vector2 newPosition) {
@@ -65,7 +76,7 @@ void Character::completedOrder() {
 	reachedLocation = false;
 }
 
-bool Character::giveOrder(Order newOrder, Grid* grid) {
+bool Character::giveOrder(Order newOrder) {
 	if (hasOrder) return false;
 	int level = 0;
 	for (int i = 0; i < 12; i++) {
@@ -77,13 +88,13 @@ bool Character::giveOrder(Order newOrder, Grid* grid) {
 	if (level >= newOrder.getSkillRequirementLevel()) {
 		hasOrder = true;
 		order = newOrder;
-		characterAi.setGoal(order.getPosition(), grid);
+		characterAi.setGoal(order.getPosition());
 		return true;
 	}
 	return false;
 }
 
-void Character::update(float &deltaTime, Grid* grid) {
+void Character::update(float &deltaTime) {
 	hunger -= hungerFillAmount * deltaTime;
 	if (hunger <= 0) {
 		hunger = 0;
@@ -113,7 +124,7 @@ void Character::update(float &deltaTime, Grid* grid) {
 			newGoal.y = max(newGoal.y, 0);
 			newGoal.x = min(newGoal.x, 255);
 			newGoal.y = min(newGoal.y, 255);
-			characterAi.setGoal(newGoal, grid);
+			characterAi.setGoal(newGoal);
 		}
 	}
 	if (reachedLocation) {

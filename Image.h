@@ -58,6 +58,12 @@ public:
     void drawFlipped(sf::RenderWindow& window, Vector2 position) {
         drawWithinBounds(window, position, Vector2(1920, 1080), flipped);
     }
+    void drawTop(sf::RenderWindow& window, Vector2 position) {
+        drawWithinBounds(window, position, Vector2(1920, 1080), spriteTop);
+    }
+    void drawRotated(sf::RenderWindow& window, Vector2 position) {
+        drawWithinBounds(window, position, Vector2(1920, 1080), rotated);
+    }
     void drawWithinBounds(sf::RenderWindow& window, Vector2 position, Vector2 dimensions, sf::Sprite& toDraw) {
         if (position.x < dimensions.x && position.y < dimensions.y) {
             if (position.x + pixelsWide > 0 && position.y + pixelsWide > 0) {
@@ -65,14 +71,6 @@ public:
                 window.draw(toDraw);
             }
         }
-    }
-    void drawTop(sf::RenderWindow& window, Vector2 position) {
-        spriteTop.setPosition(sf::Vector2f(position.x, position.y));
-        window.draw(spriteTop);
-    }
-    void drawRotated(sf::RenderWindow& window, Vector2 position) {
-        rotated.setPosition(sf::Vector2f(position.x, position.y));
-        window.draw(rotated);
     }
 };
 #endif
